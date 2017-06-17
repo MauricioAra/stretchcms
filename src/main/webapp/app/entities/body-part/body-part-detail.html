@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.bodyPart.detail.title">Body Part</span> {{vm.bodyPart.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.bodyPart.name">Name</span></dt>
+        <dd>
+            <span>{{vm.bodyPart.name}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.bodyPart.image">Image</span></dt>
+        <dd>
+            <span>{{vm.bodyPart.image}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.bodyPart.status">Status</span></dt>
+        <dd>
+            <span>{{vm.bodyPart.status}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.bodyPart.subCategory">Sub Category</span></dt>
+        <dd>
+            <a ui-sref="sub-category-detail({id:vm.bodyPart.subCategoryId})">{{vm.bodyPart.subCategoryName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="body-part-detail.edit({id:vm.bodyPart.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

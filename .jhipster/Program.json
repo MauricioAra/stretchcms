@@ -1,0 +1,67 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "programFeedBack",
+            "otherEntityName": "programFeedBack",
+            "otherEntityRelationshipName": "program"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "program",
+            "relationshipName": "exercise",
+            "otherEntityName": "exercise",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "userApp",
+            "otherEntityName": "userApp",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "calendar",
+            "otherEntityName": "calendar",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "program"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "intDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "finishDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "interval",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cantRepetition",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isDairy",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170617213550",
+    "entityTableName": "program",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

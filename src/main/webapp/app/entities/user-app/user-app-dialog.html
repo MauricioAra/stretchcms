@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserAppLabel" data-translate="stretchCmsApp.userApp.home.createOrEditLabel">Create or edit a User App</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.userApp.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.userApp.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.userApp.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.userApp.name"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.userApp.lastName" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                    ng-model="vm.userApp.lastName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.userApp.age" for="field_age">Age</label>
+            <input type="text" class="form-control" name="age" id="field_age"
+                    ng-model="vm.userApp.age"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.userApp.gender" for="field_gender">Gender</label>
+            <input type="text" class="form-control" name="gender" id="field_gender"
+                    ng-model="vm.userApp.gender"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.userApp.weight" for="field_weight">Weight</label>
+            <input type="number" class="form-control" name="weight" id="field_weight"
+                    ng-model="vm.userApp.weight"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.userApp.height" for="field_height">Height</label>
+            <input type="number" class="form-control" name="height" id="field_height"
+                    ng-model="vm.userApp.height"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="stretchCmsApp.userApp.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.userApp.userId" ng-options="user.id as user.email for user in vm.users"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="stretchCmsApp.userApp.userHealth" for="field_userHealth">User Health</label>
+            <select class="form-control" id="field_userHealth" name="userHealth" ng-model="vm.userApp.userHealthId" ng-options="userHealth.id as userHealth.id for userHealth in vm.userhealths | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="stretchCmsApp.userApp.exercise" for="field_exercise">Exercise</label>
+            <select class="form-control" id="field_exercise" multiple name="exercise" ng-model="vm.userApp.exercises" ng-options="exercise as exercise.name for exercise in vm.exercises track by exercise.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

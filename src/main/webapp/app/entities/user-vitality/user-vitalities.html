@@ -1,0 +1,62 @@
+<div>
+    <h2 data-translate="stretchCmsApp.userVitality.home.title">User Vitalities</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="user-vitality.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="stretchCmsApp.userVitality.home.createLabel">
+                        Create new User Vitality
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="stretchCmsApp.userVitality.comment">Comment</span></th>
+                    <th><span data-translate="stretchCmsApp.userVitality.range">Range</span></th>
+                    <th><span data-translate="stretchCmsApp.userVitality.userApp">User App</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="userVitality in vm.userVitalities track by userVitality.id">
+                    <td><a ui-sref="user-vitality-detail({id:userVitality.id})">{{userVitality.id}}</a></td>
+                    <td>{{userVitality.comment}}</td>
+                    <td>{{userVitality.range}}</td>
+                    <td>
+                        <a ui-sref="user-app-detail({id:userVitality.userAppId})">{{userVitality.userAppName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="user-vitality-detail({id:userVitality.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-vitality.edit({id:userVitality.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-vitality.delete({id:userVitality.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

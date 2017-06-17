@@ -1,0 +1,22 @@
+{
+    "stretchCmsApp": {
+        "foodTag" : {
+            "home": {
+                "title": "Food Tags",
+                "createLabel": "Crear nuevo Food Tag",
+                "createOrEditLabel": "Crear o editar Food Tag"
+            },
+            "created": "Un nuevo Food Tag ha sido creado con el identificador {{ param }}",
+            "updated": "Un Food Tag ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Food Tag ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Food Tag {{ id }}?"
+            },
+            "detail": {
+                "title": "Food Tag"
+            },
+            "name": "Name",
+            "food": "Food"
+        }
+    }
+}

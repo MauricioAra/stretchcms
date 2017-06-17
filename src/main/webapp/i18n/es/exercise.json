@@ -1,0 +1,30 @@
+{
+    "stretchCmsApp": {
+        "exercise" : {
+            "home": {
+                "title": "Exercises",
+                "createLabel": "Crear nuevo Exercise",
+                "createOrEditLabel": "Crear o editar Exercise"
+            },
+            "created": "Un nuevo Exercise ha sido creado con el identificador {{ param }}",
+            "updated": "Un Exercise ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Exercise ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Exercise {{ id }}?"
+            },
+            "detail": {
+                "title": "Exercise"
+            },
+            "name": "Name",
+            "image": "Image",
+            "time": "Time",
+            "repetition": "Repetition",
+            "difficulty": "Difficulty",
+            "calification": "Calification",
+            "status": "Status",
+            "bodyPart": "Body Part",
+            "userApp": "User App",
+            "program": "Program"
+        }
+    }
+}

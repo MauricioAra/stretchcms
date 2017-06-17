@@ -1,0 +1,57 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.userApp.detail.title">User App</span> {{vm.userApp.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.userApp.name">Name</span></dt>
+        <dd>
+            <span>{{vm.userApp.name}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{vm.userApp.lastName}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.age">Age</span></dt>
+        <dd>
+            <span>{{vm.userApp.age}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.gender">Gender</span></dt>
+        <dd>
+            <span>{{vm.userApp.gender}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.weight">Weight</span></dt>
+        <dd>
+            <span>{{vm.userApp.weight}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.height">Height</span></dt>
+        <dd>
+            <span>{{vm.userApp.height}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.user">User</span></dt>
+        <dd>
+            {{vm.userApp.userEmail}}
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.userHealth">User Health</span></dt>
+        <dd>
+            <a ui-sref="user-health-detail({id:vm.userApp.userHealthId})">{{vm.userApp.userHealthId}}</a>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userApp.exercise">Exercise</span></dt>
+        <dd>
+            <span ng-repeat="exercise in vm.userApp.exercises">
+                <a ui-sref="exercise-detail({id: exercise.id})">{{exercise.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-app-detail.edit({id:vm.userApp.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

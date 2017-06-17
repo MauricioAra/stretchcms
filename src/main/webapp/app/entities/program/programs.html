@@ -1,0 +1,78 @@
+<div>
+    <h2 data-translate="stretchCmsApp.program.home.title">Programs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="program.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="stretchCmsApp.program.home.createLabel">
+                        Create new Program
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="stretchCmsApp.program.name">Name</span></th>
+                    <th><span data-translate="stretchCmsApp.program.intDate">Int Date</span></th>
+                    <th><span data-translate="stretchCmsApp.program.finishDate">Finish Date</span></th>
+                    <th><span data-translate="stretchCmsApp.program.interval">Interval</span></th>
+                    <th><span data-translate="stretchCmsApp.program.cantRepetition">Cant Repetition</span></th>
+                    <th><span data-translate="stretchCmsApp.program.status">Status</span></th>
+                    <th><span data-translate="stretchCmsApp.program.isDairy">Is Dairy</span></th>
+                    <th><span data-translate="stretchCmsApp.program.exercise">Exercise</span></th>
+                    <th><span data-translate="stretchCmsApp.program.userApp">User App</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="program in vm.programs track by program.id">
+                    <td><a ui-sref="program-detail({id:program.id})">{{program.id}}</a></td>
+                    <td>{{program.name}}</td>
+                    <td>{{program.intDate}}</td>
+                    <td>{{program.finishDate}}</td>
+                    <td>{{program.interval}}</td>
+                    <td>{{program.cantRepetition}}</td>
+                    <td>{{program.status}}</td>
+                    <td>{{program.isDairy}}</td>
+                    <td>
+                        <span ng-repeat="exercise in program.exercises">
+                            <a class="form-control-static" ui-sref="exercise-detail({id: exercise.id})">{{exercise.name}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <a ui-sref="user-app-detail({id:program.userAppId})">{{program.userAppId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="program-detail({id:program.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="program.edit({id:program.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="program.delete({id:program.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

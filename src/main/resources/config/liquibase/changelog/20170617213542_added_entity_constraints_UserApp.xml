@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity UserApp.
+    -->
+    <changeSet id="20170617213542-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_app"
+                                 constraintName="fk_user_app_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_health_id"
+                                 baseTableName="user_app"
+                                 constraintName="fk_user_app_user_health_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_health"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_apps_id"
+                                 baseTableName="user_app_exercise"
+                                 constraintName="fk_user_app_exercise_user_apps_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_app"/>
+        <addForeignKeyConstraint baseColumnNames="exercises_id"
+                                 baseTableName="user_app_exercise"
+                                 constraintName="fk_user_app_exercise_exercises_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="exercise"/>
+        
+    </changeSet>
+</databaseChangeLog>

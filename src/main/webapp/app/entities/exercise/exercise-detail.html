@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.exercise.detail.title">Exercise</span> {{vm.exercise.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.exercise.name">Name</span></dt>
+        <dd>
+            <span>{{vm.exercise.name}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.exercise.image">Image</span></dt>
+        <dd>
+            <span>{{vm.exercise.image}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.exercise.time">Time</span></dt>
+        <dd>
+            <span>{{vm.exercise.time}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.exercise.repetition">Repetition</span></dt>
+        <dd>
+            <span>{{vm.exercise.repetition}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.exercise.difficulty">Difficulty</span></dt>
+        <dd>
+            <span>{{vm.exercise.difficulty}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.exercise.calification">Calification</span></dt>
+        <dd>
+            <span>{{vm.exercise.calification}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.exercise.status">Status</span></dt>
+        <dd>
+            <span>{{vm.exercise.status}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.exercise.bodyPart">Body Part</span></dt>
+        <dd>
+            <a ui-sref="body-part-detail({id:vm.exercise.bodyPartId})">{{vm.exercise.bodyPartName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="exercise-detail.edit({id:vm.exercise.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

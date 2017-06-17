@@ -1,0 +1,26 @@
+{
+    "stretchCmsApp": {
+        "bodyPart" : {
+            "home": {
+                "title": "Body Parts",
+                "createLabel": "Crear nuevo Body Part",
+                "createOrEditLabel": "Crear o editar Body Part"
+            },
+            "created": "Un nuevo Body Part ha sido creado con el identificador {{ param }}",
+            "updated": "Un Body Part ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Body Part ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Body Part {{ id }}?"
+            },
+            "detail": {
+                "title": "Body Part"
+            },
+            "name": "Name",
+            "image": "Image",
+            "status": "Status",
+            "exercise": "Exercise",
+            "subCategory": "Sub Category",
+            "userHealth": "User Health"
+        }
+    }
+}

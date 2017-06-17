@@ -1,0 +1,25 @@
+{
+    "stretchCmsApp": {
+        "subCategory" : {
+            "home": {
+                "title": "Sub Categories",
+                "createLabel": "Crear nuevo Sub Category",
+                "createOrEditLabel": "Crear o editar Sub Category"
+            },
+            "created": "Un nuevo Sub Category ha sido creado con el identificador {{ param }}",
+            "updated": "Un Sub Category ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Sub Category ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Sub Category {{ id }}?"
+            },
+            "detail": {
+                "title": "Sub Category"
+            },
+            "name": "Name",
+            "image": "Image",
+            "status": "Status",
+            "bodyPart": "Body Part",
+            "category": "Category"
+        }
+    }
+}

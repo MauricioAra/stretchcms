@@ -1,0 +1,47 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCalendarLabel" data-translate="stretchCmsApp.calendar.home.createOrEditLabel">Create or edit a Calendar</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.calendar.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.calendar.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.calendar.date" for="field_date">Date</label>
+            <input type="text" class="form-control" name="date" id="field_date"
+                    ng-model="vm.calendar.date"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.calendar.hour" for="field_hour">Hour</label>
+            <input type="text" class="form-control" name="hour" id="field_hour"
+                    ng-model="vm.calendar.hour"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="stretchCmsApp.calendar.status" for="field_status">Status</label>
+                <input type="checkbox" name="status" id="field_status"
+                          ng-model="vm.calendar.status"/>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="stretchCmsApp.calendar.program" for="field_program">Program</label>
+            <select class="form-control" id="field_program" multiple name="program" ng-model="vm.calendar.programs" ng-options="program as program.name for program in vm.programs track by program.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

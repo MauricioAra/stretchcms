@@ -1,0 +1,72 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "email",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userApp"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "userHealth",
+            "otherEntityName": "userHealth",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userApp(name)"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "program",
+            "otherEntityName": "program",
+            "otherEntityRelationshipName": "userApp"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "userVitality",
+            "otherEntityName": "userVitality",
+            "otherEntityRelationshipName": "userApp"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "userApp",
+            "relationshipName": "exercise",
+            "otherEntityName": "exercise",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "age",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "weight",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "height",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20170617213542",
+    "entityTableName": "user_app",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,31 @@
+{
+    "stretchCmsApp": {
+        "program" : {
+            "home": {
+                "title": "Programs",
+                "createLabel": "Crear nuevo Program",
+                "createOrEditLabel": "Crear o editar Program"
+            },
+            "created": "Un nuevo Program ha sido creado con el identificador {{ param }}",
+            "updated": "Un Program ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Program ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Program {{ id }}?"
+            },
+            "detail": {
+                "title": "Program"
+            },
+            "name": "Name",
+            "intDate": "Int Date",
+            "finishDate": "Finish Date",
+            "interval": "Interval",
+            "cantRepetition": "Cant Repetition",
+            "status": "Status",
+            "isDairy": "Is Dairy",
+            "programFeedBack": "Program Feed Back",
+            "exercise": "Exercise",
+            "userApp": "User App",
+            "calendar": "Calendar"
+        }
+    }
+}

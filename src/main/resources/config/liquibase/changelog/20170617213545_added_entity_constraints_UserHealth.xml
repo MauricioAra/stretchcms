@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity UserHealth.
+    -->
+    <changeSet id="20170617213545-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_healths_id"
+                                 baseTableName="user_health_body_part"
+                                 constraintName="fk_user_health_body_part_user_healths_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_health"/>
+        <addForeignKeyConstraint baseColumnNames="body_parts_id"
+                                 baseTableName="user_health_body_part"
+                                 constraintName="fk_user_health_body_part_body_parts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="body_part"/>
+        
+    </changeSet>
+</databaseChangeLog>

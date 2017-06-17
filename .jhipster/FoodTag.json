@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "food",
+            "otherEntityName": "food",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "foodTag"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170617213553",
+    "entityTableName": "food_tag",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

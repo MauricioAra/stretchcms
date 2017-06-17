@@ -1,0 +1,57 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.program.detail.title">Program</span> {{vm.program.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.program.name">Name</span></dt>
+        <dd>
+            <span>{{vm.program.name}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.intDate">Int Date</span></dt>
+        <dd>
+            <span>{{vm.program.intDate}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.finishDate">Finish Date</span></dt>
+        <dd>
+            <span>{{vm.program.finishDate}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.interval">Interval</span></dt>
+        <dd>
+            <span>{{vm.program.interval}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.cantRepetition">Cant Repetition</span></dt>
+        <dd>
+            <span>{{vm.program.cantRepetition}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.status">Status</span></dt>
+        <dd>
+            <span>{{vm.program.status}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.isDairy">Is Dairy</span></dt>
+        <dd>
+            <span>{{vm.program.isDairy}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.exercise">Exercise</span></dt>
+        <dd>
+            <span ng-repeat="exercise in vm.program.exercises">
+                <a ui-sref="exercise-detail({id: exercise.id})">{{exercise.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.program.userApp">User App</span></dt>
+        <dd>
+            <a ui-sref="user-app-detail({id:vm.program.userAppId})">{{vm.program.userAppId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="program-detail.edit({id:vm.program.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

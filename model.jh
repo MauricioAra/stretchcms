@@ -1,0 +1,105 @@
+entity UserApp{
+	name String,
+    lastName String,
+    age String,
+    gender String,
+    weight Double,
+    height Double
+}
+
+entity UserVitality{
+	comment String,
+    range Integer
+}
+
+entity ProgramFeedBack{
+	isUseful Boolean,
+    isHelpPain Boolean
+}
+
+entity UserHealth{
+	workHours Integer,
+    doesWorkOut Boolean,
+    isSmoker Boolean,
+    isHealthFood Boolean
+}
+
+entity Category{
+	name String,
+    image String,
+    status Boolean
+}
+
+entity SubCategory{
+	name String,
+    image String,
+    status Boolean
+}
+
+entity BodyPart{
+	name String,
+    image String,
+    status Boolean
+}
+
+entity Exercise{
+	name String,
+    image String,
+    time String,
+    repetition Integer,
+    difficulty String,
+    calification Integer,
+    status Boolean
+}
+
+entity Program{
+	name String,
+    intDate String,
+    finishDate String,
+    interval Integer,
+    cantRepetition Integer,
+    status Boolean,
+    isDairy Boolean
+}
+
+entity Calendar{
+	date String,
+    hour String,
+    status Boolean
+}
+
+entity Food{
+	name String,
+    image String,
+    description String,
+    status Boolean
+}
+
+entity FoodTag{
+	name String
+}
+
+relationship OneToOne {
+    UserApp{user(email)} to User,
+    UserApp{userHealth} to UserHealth{userApp(name)}
+}
+
+relationship OneToMany {
+	UserApp{Program} to Program{userApp(id)},
+    UserApp{userVitality} to UserVitality{userApp(name)},
+    Program{programFeedBack} to ProgramFeedBack{Program(name)},
+    Category{subCategory} to SubCategory{category(name)},
+    SubCategory{bodyPart} to BodyPart{subCategory(name)},
+    BodyPart{exercise} to Exercise{bodyPart(name)}
+}
+
+relationship ManyToMany {
+	UserHealth{bodyPart(name)} to BodyPart{userHealth(name)},
+    UserApp{exercise(name)} to Exercise{userApp(name)},
+    Program{exercise(name)} to Exercise{program(name)},
+    Calendar{program(name)} to Program{calendar},
+    Food{foodTag(name)} to FoodTag{food(name)}
+}
+
+dto * with mapstruct
+service all with serviceImpl

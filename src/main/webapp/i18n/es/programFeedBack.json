@@ -1,0 +1,23 @@
+{
+    "stretchCmsApp": {
+        "programFeedBack" : {
+            "home": {
+                "title": "Program Feed Backs",
+                "createLabel": "Crear nuevo Program Feed Back",
+                "createOrEditLabel": "Crear o editar Program Feed Back"
+            },
+            "created": "Un nuevo Program Feed Back ha sido creado con el identificador {{ param }}",
+            "updated": "Un Program Feed Back ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Program Feed Back ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Program Feed Back {{ id }}?"
+            },
+            "detail": {
+                "title": "Program Feed Back"
+            },
+            "isUseful": "Is Useful",
+            "isHelpPain": "Is Help Pain",
+            "program": "Program"
+        }
+    }
+}

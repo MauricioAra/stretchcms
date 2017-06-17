@@ -1,0 +1,26 @@
+{
+    "stretchCmsApp": {
+        "userHealth" : {
+            "home": {
+                "title": "User Healths",
+                "createLabel": "Crear nuevo User Health",
+                "createOrEditLabel": "Crear o editar User Health"
+            },
+            "created": "Un nuevo User Health ha sido creado con el identificador {{ param }}",
+            "updated": "Un User Health ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un User Health ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar User Health {{ id }}?"
+            },
+            "detail": {
+                "title": "User Health"
+            },
+            "workHours": "Work Hours",
+            "doesWorkOut": "Does Work Out",
+            "isSmoker": "Is Smoker",
+            "isHealthFood": "Is Health Food",
+            "bodyPart": "Body Part",
+            "userApp": "User App"
+        }
+    }
+}

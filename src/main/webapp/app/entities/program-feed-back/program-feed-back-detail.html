@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.programFeedBack.detail.title">Program Feed Back</span> {{vm.programFeedBack.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.programFeedBack.isUseful">Is Useful</span></dt>
+        <dd>
+            <span>{{vm.programFeedBack.isUseful}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.programFeedBack.isHelpPain">Is Help Pain</span></dt>
+        <dd>
+            <span>{{vm.programFeedBack.isHelpPain}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.programFeedBack.program">Program</span></dt>
+        <dd>
+            <a ui-sref="program-detail({id:vm.programFeedBack.programId})">{{vm.programFeedBack.programName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="program-feed-back-detail.edit({id:vm.programFeedBack.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

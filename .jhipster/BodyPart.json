@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "exercise",
+            "otherEntityName": "exercise",
+            "otherEntityRelationshipName": "bodyPart"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "subCategory",
+            "otherEntityName": "subCategory",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "userHealth",
+            "otherEntityName": "userHealth",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "bodyPart"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170617213548",
+    "entityTableName": "body_part",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

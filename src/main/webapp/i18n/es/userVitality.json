@@ -1,0 +1,23 @@
+{
+    "stretchCmsApp": {
+        "userVitality" : {
+            "home": {
+                "title": "User Vitalities",
+                "createLabel": "Crear nuevo User Vitality",
+                "createOrEditLabel": "Crear o editar User Vitality"
+            },
+            "created": "Un nuevo User Vitality ha sido creado con el identificador {{ param }}",
+            "updated": "Un User Vitality ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un User Vitality ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar User Vitality {{ id }}?"
+            },
+            "detail": {
+                "title": "User Vitality"
+            },
+            "comment": "Comment",
+            "range": "Range",
+            "userApp": "User App"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.subCategory.detail.title">Sub Category</span> {{vm.subCategory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.subCategory.name">Name</span></dt>
+        <dd>
+            <span>{{vm.subCategory.name}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.subCategory.image">Image</span></dt>
+        <dd>
+            <span>{{vm.subCategory.image}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.subCategory.status">Status</span></dt>
+        <dd>
+            <span>{{vm.subCategory.status}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.subCategory.category">Category</span></dt>
+        <dd>
+            <a ui-sref="category-detail({id:vm.subCategory.categoryId})">{{vm.subCategory.categoryName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="sub-category-detail.edit({id:vm.subCategory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

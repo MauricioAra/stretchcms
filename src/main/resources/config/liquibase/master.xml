@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213542_added_entity_UserApp.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213543_added_entity_UserVitality.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213544_added_entity_ProgramFeedBack.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213545_added_entity_UserHealth.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213546_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213547_added_entity_SubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213548_added_entity_BodyPart.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213549_added_entity_Exercise.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213550_added_entity_Program.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213551_added_entity_Calendar.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213552_added_entity_Food.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213553_added_entity_FoodTag.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20170617213542_added_entity_constraints_UserApp.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213543_added_entity_constraints_UserVitality.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213544_added_entity_constraints_ProgramFeedBack.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213545_added_entity_constraints_UserHealth.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213547_added_entity_constraints_SubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213548_added_entity_constraints_BodyPart.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213549_added_entity_constraints_Exercise.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213550_added_entity_constraints_Program.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213551_added_entity_constraints_Calendar.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170617213552_added_entity_constraints_Food.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

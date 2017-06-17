@@ -1,0 +1,66 @@
+<div>
+    <h2 data-translate="stretchCmsApp.calendar.home.title">Calendars</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="calendar.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="stretchCmsApp.calendar.home.createLabel">
+                        Create new Calendar
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="stretchCmsApp.calendar.date">Date</span></th>
+                    <th><span data-translate="stretchCmsApp.calendar.hour">Hour</span></th>
+                    <th><span data-translate="stretchCmsApp.calendar.status">Status</span></th>
+                    <th><span data-translate="stretchCmsApp.calendar.program">Program</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="calendar in vm.calendars track by calendar.id">
+                    <td><a ui-sref="calendar-detail({id:calendar.id})">{{calendar.id}}</a></td>
+                    <td>{{calendar.date}}</td>
+                    <td>{{calendar.hour}}</td>
+                    <td>{{calendar.status}}</td>
+                    <td>
+                        <span ng-repeat="program in calendar.programs">
+                            <a class="form-control-static" ui-sref="program-detail({id: program.id})">{{program.name}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="calendar-detail({id:calendar.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="calendar.edit({id:calendar.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="calendar.delete({id:calendar.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

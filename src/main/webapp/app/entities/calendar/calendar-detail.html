@@ -1,0 +1,37 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.calendar.detail.title">Calendar</span> {{vm.calendar.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.calendar.date">Date</span></dt>
+        <dd>
+            <span>{{vm.calendar.date}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.calendar.hour">Hour</span></dt>
+        <dd>
+            <span>{{vm.calendar.hour}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.calendar.status">Status</span></dt>
+        <dd>
+            <span>{{vm.calendar.status}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.calendar.program">Program</span></dt>
+        <dd>
+            <span ng-repeat="program in vm.calendar.programs">
+                <a ui-sref="program-detail({id: program.id})">{{program.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="calendar-detail.edit({id:vm.calendar.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

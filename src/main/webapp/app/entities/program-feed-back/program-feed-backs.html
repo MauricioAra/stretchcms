@@ -1,0 +1,62 @@
+<div>
+    <h2 data-translate="stretchCmsApp.programFeedBack.home.title">Program Feed Backs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="program-feed-back.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="stretchCmsApp.programFeedBack.home.createLabel">
+                        Create new Program Feed Back
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="stretchCmsApp.programFeedBack.isUseful">Is Useful</span></th>
+                    <th><span data-translate="stretchCmsApp.programFeedBack.isHelpPain">Is Help Pain</span></th>
+                    <th><span data-translate="stretchCmsApp.programFeedBack.program">Program</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="programFeedBack in vm.programFeedBacks track by programFeedBack.id">
+                    <td><a ui-sref="program-feed-back-detail({id:programFeedBack.id})">{{programFeedBack.id}}</a></td>
+                    <td>{{programFeedBack.isUseful}}</td>
+                    <td>{{programFeedBack.isHelpPain}}</td>
+                    <td>
+                        <a ui-sref="program-detail({id:programFeedBack.programId})">{{programFeedBack.programName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="program-feed-back-detail({id:programFeedBack.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="program-feed-back.edit({id:programFeedBack.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="program-feed-back.delete({id:programFeedBack.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

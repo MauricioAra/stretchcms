@@ -1,0 +1,31 @@
+{
+    "stretchCmsApp": {
+        "userApp" : {
+            "home": {
+                "title": "User Apps",
+                "createLabel": "Crear nuevo User App",
+                "createOrEditLabel": "Crear o editar User App"
+            },
+            "created": "Un nuevo User App ha sido creado con el identificador {{ param }}",
+            "updated": "Un User App ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un User App ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar User App {{ id }}?"
+            },
+            "detail": {
+                "title": "User App"
+            },
+            "name": "Name",
+            "lastName": "Last Name",
+            "age": "Age",
+            "gender": "Gender",
+            "weight": "Weight",
+            "height": "Height",
+            "user": "User",
+            "userHealth": "User Health",
+            "program": "Program",
+            "userVitality": "User Vitality",
+            "exercise": "Exercise"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "bodyPart",
+            "otherEntityName": "bodyPart",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "userApp",
+            "otherEntityName": "userApp",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "exercise"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "program",
+            "otherEntityName": "program",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "exercise"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "time",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "repetition",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "difficulty",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "calification",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170617213549",
+    "entityTableName": "exercise",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

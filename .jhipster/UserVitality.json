@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "userApp",
+            "otherEntityName": "userApp",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "range",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170617213543",
+    "entityTableName": "user_vitality",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

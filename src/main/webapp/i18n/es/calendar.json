@@ -1,0 +1,24 @@
+{
+    "stretchCmsApp": {
+        "calendar" : {
+            "home": {
+                "title": "Calendars",
+                "createLabel": "Crear nuevo Calendar",
+                "createOrEditLabel": "Crear o editar Calendar"
+            },
+            "created": "Un nuevo Calendar ha sido creado con el identificador {{ param }}",
+            "updated": "Un Calendar ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Calendar ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Calendar {{ id }}?"
+            },
+            "detail": {
+                "title": "Calendar"
+            },
+            "date": "Date",
+            "hour": "Hour",
+            "status": "Status",
+            "program": "Program"
+        }
+    }
+}

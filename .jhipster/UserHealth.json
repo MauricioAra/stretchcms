@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "userHealth",
+            "relationshipName": "bodyPart",
+            "otherEntityName": "bodyPart",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "userApp",
+            "otherEntityName": "userApp",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "userHealth"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "workHours",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "doesWorkOut",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isSmoker",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isHealthFood",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170617213545",
+    "entityTableName": "user_health",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

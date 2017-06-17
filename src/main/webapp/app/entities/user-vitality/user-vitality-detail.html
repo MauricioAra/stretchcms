@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="stretchCmsApp.userVitality.detail.title">User Vitality</span> {{vm.userVitality.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="stretchCmsApp.userVitality.comment">Comment</span></dt>
+        <dd>
+            <span>{{vm.userVitality.comment}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userVitality.range">Range</span></dt>
+        <dd>
+            <span>{{vm.userVitality.range}}</span>
+        </dd>
+        <dt><span data-translate="stretchCmsApp.userVitality.userApp">User App</span></dt>
+        <dd>
+            <a ui-sref="user-app-detail({id:vm.userVitality.userAppId})">{{vm.userVitality.userAppName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-vitality-detail.edit({id:vm.userVitality.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

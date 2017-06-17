@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "program",
+            "otherEntityName": "program",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "isUseful",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isHelpPain",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170617213544",
+    "entityTableName": "program_feed_back",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}
