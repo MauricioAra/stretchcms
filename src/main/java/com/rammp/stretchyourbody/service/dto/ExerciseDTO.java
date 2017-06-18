@@ -27,6 +27,8 @@ public class ExerciseDTO implements Serializable {
 
     private Boolean status;
 
+    private Boolean isRecommended;
+
     private Long bodyPartId;
 
     private String bodyPartName;
@@ -87,6 +89,13 @@ public class ExerciseDTO implements Serializable {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+    public Boolean getIsRecommended() {
+        return isRecommended;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+    }
 
     public Long getBodyPartId() {
         return bodyPartId;
@@ -136,6 +145,7 @@ public class ExerciseDTO implements Serializable {
             ", difficulty='" + difficulty + "'" +
             ", calification='" + calification + "'" +
             ", status='" + status + "'" +
+            ", isRecommended='" + isRecommended + "'" +
             '}';
     }
 }

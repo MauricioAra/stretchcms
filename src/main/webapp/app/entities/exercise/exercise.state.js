@@ -111,6 +111,7 @@
                                 difficulty: null,
                                 calification: null,
                                 status: null,
+                                isRecommended: null,
                                 id: null
                             };
                         }

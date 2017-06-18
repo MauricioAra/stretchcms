@@ -57,6 +57,10 @@
         {
             "fieldName": "isDairy",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isRecommended",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20170617213550",

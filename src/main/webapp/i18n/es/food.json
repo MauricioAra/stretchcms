@@ -19,6 +19,7 @@
             "image": "Image",
             "description": "Description",
             "status": "Status",
+            "isRecommended": "Is Recommended",
             "foodTag": "Food Tag"
         }
     }

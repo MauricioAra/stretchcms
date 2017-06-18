@@ -26,6 +26,7 @@
                     <th><span data-translate="stretchCmsApp.exercise.difficulty">Difficulty</span></th>
                     <th><span data-translate="stretchCmsApp.exercise.calification">Calification</span></th>
                     <th><span data-translate="stretchCmsApp.exercise.status">Status</span></th>
+                    <th><span data-translate="stretchCmsApp.exercise.isRecommended">Is Recommended</span></th>
                     <th><span data-translate="stretchCmsApp.exercise.bodyPart">Body Part</span></th>
                     <th></th>
                 </tr>
@@ -40,6 +41,7 @@
                     <td>{{exercise.difficulty}}</td>
                     <td>{{exercise.calification}}</td>
                     <td>{{exercise.status}}</td>
+                    <td>{{exercise.isRecommended}}</td>
                     <td>
                         <a ui-sref="body-part-detail({id:exercise.bodyPartId})">{{exercise.bodyPartName}}</a>
                     </td>

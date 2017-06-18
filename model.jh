@@ -49,7 +49,8 @@ entity Exercise{
     repetition Integer,
     difficulty String,
     calification Integer,
-    status Boolean
+    status Boolean,
+    isRecommended Boolean
 }
 
 entity Program{
@@ -59,7 +60,8 @@ entity Program{
     interval Integer,
     cantRepetition Integer,
     status Boolean,
-    isDairy Boolean
+    isDairy Boolean,
+    isRecommended Boolean
 }
 
 entity Calendar{
@@ -72,7 +74,8 @@ entity Food{
 	name String,
     image String,
     description String,
-    status Boolean
+    status Boolean,
+    isRecommended Boolean
 }
 
 entity FoodTag{

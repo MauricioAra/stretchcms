@@ -27,6 +27,8 @@ public class ProgramDTO implements Serializable {
 
     private Boolean isDairy;
 
+    private Boolean isRecommended;
+
     private Set<ExerciseDTO> exercises = new HashSet<>();
 
     private Long userAppId;
@@ -87,6 +89,13 @@ public class ProgramDTO implements Serializable {
     public void setIsDairy(Boolean isDairy) {
         this.isDairy = isDairy;
     }
+    public Boolean getIsRecommended() {
+        return isRecommended;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+    }
 
     public Set<ExerciseDTO> getExercises() {
         return exercises;
@@ -136,6 +145,7 @@ public class ProgramDTO implements Serializable {
             ", cantRepetition='" + cantRepetition + "'" +
             ", status='" + status + "'" +
             ", isDairy='" + isDairy + "'" +
+            ", isRecommended='" + isRecommended + "'" +
             '}';
     }
 }

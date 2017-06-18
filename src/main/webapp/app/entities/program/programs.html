@@ -26,6 +26,7 @@
                     <th><span data-translate="stretchCmsApp.program.cantRepetition">Cant Repetition</span></th>
                     <th><span data-translate="stretchCmsApp.program.status">Status</span></th>
                     <th><span data-translate="stretchCmsApp.program.isDairy">Is Dairy</span></th>
+                    <th><span data-translate="stretchCmsApp.program.isRecommended">Is Recommended</span></th>
                     <th><span data-translate="stretchCmsApp.program.exercise">Exercise</span></th>
                     <th><span data-translate="stretchCmsApp.program.userApp">User App</span></th>
                     <th></th>
@@ -41,6 +42,7 @@
                     <td>{{program.cantRepetition}}</td>
                     <td>{{program.status}}</td>
                     <td>{{program.isDairy}}</td>
+                    <td>{{program.isRecommended}}</td>
                     <td>
                         <span ng-repeat="exercise in program.exercises">
                             <a class="form-control-static" ui-sref="exercise-detail({id: exercise.id})">{{exercise.name}}</a>{{$last ? '' : ', '}}

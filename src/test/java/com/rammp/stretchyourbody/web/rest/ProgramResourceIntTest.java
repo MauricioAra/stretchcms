@@ -61,6 +61,9 @@ public class ProgramResourceIntTest {
     private static final Boolean DEFAULT_IS_DAIRY = false;
     private static final Boolean UPDATED_IS_DAIRY = true;
 
+    private static final Boolean DEFAULT_IS_RECOMMENDED = false;
+    private static final Boolean UPDATED_IS_RECOMMENDED = true;
+
     @Autowired
     private ProgramRepository programRepository;
 
@@ -110,7 +113,8 @@ public class ProgramResourceIntTest {
             .interval(DEFAULT_INTERVAL)
             .cantRepetition(DEFAULT_CANT_REPETITION)
             .status(DEFAULT_STATUS)
-            .isDairy(DEFAULT_IS_DAIRY);
+            .isDairy(DEFAULT_IS_DAIRY)
+            .isRecommended(DEFAULT_IS_RECOMMENDED);
         return program;
     }
 
@@ -142,6 +146,7 @@ public class ProgramResourceIntTest {
         assertThat(testProgram.getCantRepetition()).isEqualTo(DEFAULT_CANT_REPETITION);
         assertThat(testProgram.isStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testProgram.isIsDairy()).isEqualTo(DEFAULT_IS_DAIRY);
+        assertThat(testProgram.isIsRecommended()).isEqualTo(DEFAULT_IS_RECOMMENDED);
     }
 
     @Test
@@ -181,7 +186,8 @@ public class ProgramResourceIntTest {
             .andExpect(jsonPath("$.[*].interval").value(hasItem(DEFAULT_INTERVAL)))
             .andExpect(jsonPath("$.[*].cantRepetition").value(hasItem(DEFAULT_CANT_REPETITION)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())))
-            .andExpect(jsonPath("$.[*].isDairy").value(hasItem(DEFAULT_IS_DAIRY.booleanValue())));
+            .andExpect(jsonPath("$.[*].isDairy").value(hasItem(DEFAULT_IS_DAIRY.booleanValue())))
+            .andExpect(jsonPath("$.[*].isRecommended").value(hasItem(DEFAULT_IS_RECOMMENDED.booleanValue())));
     }
 
     @Test
@@ -201,7 +207,8 @@ public class ProgramResourceIntTest {
             .andExpect(jsonPath("$.interval").value(DEFAULT_INTERVAL))
             .andExpect(jsonPath("$.cantRepetition").value(DEFAULT_CANT_REPETITION))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()))
-            .andExpect(jsonPath("$.isDairy").value(DEFAULT_IS_DAIRY.booleanValue()));
+            .andExpect(jsonPath("$.isDairy").value(DEFAULT_IS_DAIRY.booleanValue()))
+            .andExpect(jsonPath("$.isRecommended").value(DEFAULT_IS_RECOMMENDED.booleanValue()));
     }
 
     @Test
@@ -228,7 +235,8 @@ public class ProgramResourceIntTest {
             .interval(UPDATED_INTERVAL)
             .cantRepetition(UPDATED_CANT_REPETITION)
             .status(UPDATED_STATUS)
-            .isDairy(UPDATED_IS_DAIRY);
+            .isDairy(UPDATED_IS_DAIRY)
+            .isRecommended(UPDATED_IS_RECOMMENDED);
         ProgramDTO programDTO = programMapper.programToProgramDTO(updatedProgram);
 
         restProgramMockMvc.perform(put("/api/programs")
@@ -247,6 +255,7 @@ public class ProgramResourceIntTest {
         assertThat(testProgram.getCantRepetition()).isEqualTo(UPDATED_CANT_REPETITION);
         assertThat(testProgram.isStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testProgram.isIsDairy()).isEqualTo(UPDATED_IS_DAIRY);
+        assertThat(testProgram.isIsRecommended()).isEqualTo(UPDATED_IS_RECOMMENDED);
     }
 
     @Test

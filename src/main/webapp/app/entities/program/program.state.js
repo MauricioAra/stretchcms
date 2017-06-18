@@ -111,6 +111,7 @@
                                 cantRepetition: null,
                                 status: null,
                                 isDairy: null,
+                                isRecommended: null,
                                 id: null
                             };
                         }

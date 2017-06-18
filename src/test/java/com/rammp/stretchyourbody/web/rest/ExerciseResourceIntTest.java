@@ -61,6 +61,9 @@ public class ExerciseResourceIntTest {
     private static final Boolean DEFAULT_STATUS = false;
     private static final Boolean UPDATED_STATUS = true;
 
+    private static final Boolean DEFAULT_IS_RECOMMENDED = false;
+    private static final Boolean UPDATED_IS_RECOMMENDED = true;
+
     @Autowired
     private ExerciseRepository exerciseRepository;
 
@@ -110,7 +113,8 @@ public class ExerciseResourceIntTest {
             .repetition(DEFAULT_REPETITION)
             .difficulty(DEFAULT_DIFFICULTY)
             .calification(DEFAULT_CALIFICATION)
-            .status(DEFAULT_STATUS);
+            .status(DEFAULT_STATUS)
+            .isRecommended(DEFAULT_IS_RECOMMENDED);
         return exercise;
     }
 
@@ -142,6 +146,7 @@ public class ExerciseResourceIntTest {
         assertThat(testExercise.getDifficulty()).isEqualTo(DEFAULT_DIFFICULTY);
         assertThat(testExercise.getCalification()).isEqualTo(DEFAULT_CALIFICATION);
         assertThat(testExercise.isStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testExercise.isIsRecommended()).isEqualTo(DEFAULT_IS_RECOMMENDED);
     }
 
     @Test
@@ -181,7 +186,8 @@ public class ExerciseResourceIntTest {
             .andExpect(jsonPath("$.[*].repetition").value(hasItem(DEFAULT_REPETITION)))
             .andExpect(jsonPath("$.[*].difficulty").value(hasItem(DEFAULT_DIFFICULTY.toString())))
             .andExpect(jsonPath("$.[*].calification").value(hasItem(DEFAULT_CALIFICATION)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())))
+            .andExpect(jsonPath("$.[*].isRecommended").value(hasItem(DEFAULT_IS_RECOMMENDED.booleanValue())));
     }
 
     @Test
@@ -201,7 +207,8 @@ public class ExerciseResourceIntTest {
             .andExpect(jsonPath("$.repetition").value(DEFAULT_REPETITION))
             .andExpect(jsonPath("$.difficulty").value(DEFAULT_DIFFICULTY.toString()))
             .andExpect(jsonPath("$.calification").value(DEFAULT_CALIFICATION))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()))
+            .andExpect(jsonPath("$.isRecommended").value(DEFAULT_IS_RECOMMENDED.booleanValue()));
     }
 
     @Test
@@ -228,7 +235,8 @@ public class ExerciseResourceIntTest {
             .repetition(UPDATED_REPETITION)
             .difficulty(UPDATED_DIFFICULTY)
             .calification(UPDATED_CALIFICATION)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .isRecommended(UPDATED_IS_RECOMMENDED);
         ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(updatedExercise);
 
         restExerciseMockMvc.perform(put("/api/exercises")
@@ -247,6 +255,7 @@ public class ExerciseResourceIntTest {
         assertThat(testExercise.getDifficulty()).isEqualTo(UPDATED_DIFFICULTY);
         assertThat(testExercise.getCalification()).isEqualTo(UPDATED_CALIFICATION);
         assertThat(testExercise.isStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testExercise.isIsRecommended()).isEqualTo(UPDATED_IS_RECOMMENDED);
     }
 
     @Test

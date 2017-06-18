@@ -32,6 +32,9 @@ public class Food implements Serializable {
     @Column(name = "status")
     private Boolean status;
 
+    @Column(name = "is_recommended")
+    private Boolean isRecommended;
+
     @ManyToMany
     @JoinTable(name = "food_food_tag",
                joinColumns = @JoinColumn(name="foods_id", referencedColumnName="id"),
@@ -98,6 +101,19 @@ public class Food implements Serializable {
         this.status = status;
     }
 
+    public Boolean isIsRecommended() {
+        return isRecommended;
+    }
+
+    public Food isRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+        return this;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+    }
+
     public Set<FoodTag> getFoodTags() {
         return foodTags;
     }
@@ -151,6 +167,7 @@ public class Food implements Serializable {
             ", image='" + image + "'" +
             ", description='" + description + "'" +
             ", status='" + status + "'" +
+            ", isRecommended='" + isRecommended + "'" +
             '}';
     }
 }

@@ -50,6 +50,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="is_recommended" type="bit">
+                <constraints nullable="true" />
+            </column>
+
             <column name="body_part_id" type="bigint">
                 <constraints nullable="true" />
             </column>

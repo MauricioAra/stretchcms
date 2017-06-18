@@ -21,6 +21,8 @@ public class FoodDTO implements Serializable {
 
     private Boolean status;
 
+    private Boolean isRecommended;
+
     private Set<FoodTagDTO> foodTags = new HashSet<>();
 
     public Long getId() {
@@ -57,6 +59,13 @@ public class FoodDTO implements Serializable {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+    public Boolean getIsRecommended() {
+        return isRecommended;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
     }
 
     public Set<FoodTagDTO> getFoodTags() {
@@ -96,6 +105,7 @@ public class FoodDTO implements Serializable {
             ", image='" + image + "'" +
             ", description='" + description + "'" +
             ", status='" + status + "'" +
+            ", isRecommended='" + isRecommended + "'" +
             '}';
     }
 }

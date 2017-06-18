@@ -42,6 +42,9 @@ public class Exercise implements Serializable {
     @Column(name = "status")
     private Boolean status;
 
+    @Column(name = "is_recommended")
+    private Boolean isRecommended;
+
     @ManyToOne
     private BodyPart bodyPart;
 
@@ -152,6 +155,19 @@ public class Exercise implements Serializable {
         this.status = status;
     }
 
+    public Boolean isIsRecommended() {
+        return isRecommended;
+    }
+
+    public Exercise isRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+        return this;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+    }
+
     public BodyPart getBodyPart() {
         return bodyPart;
     }
@@ -246,6 +262,7 @@ public class Exercise implements Serializable {
             ", difficulty='" + difficulty + "'" +
             ", calification='" + calification + "'" +
             ", status='" + status + "'" +
+            ", isRecommended='" + isRecommended + "'" +
             '}';
     }
 }

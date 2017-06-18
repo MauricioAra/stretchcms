@@ -22,6 +22,7 @@
             "difficulty": "Difficulty",
             "calification": "Calification",
             "status": "Status",
+            "isRecommended": "Is Recommended",
             "bodyPart": "Body Part",
             "userApp": "User App",
             "program": "Program"

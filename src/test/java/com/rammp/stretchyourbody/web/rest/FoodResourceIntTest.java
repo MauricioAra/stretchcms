@@ -52,6 +52,9 @@ public class FoodResourceIntTest {
     private static final Boolean DEFAULT_STATUS = false;
     private static final Boolean UPDATED_STATUS = true;
 
+    private static final Boolean DEFAULT_IS_RECOMMENDED = false;
+    private static final Boolean UPDATED_IS_RECOMMENDED = true;
+
     @Autowired
     private FoodRepository foodRepository;
 
@@ -98,7 +101,8 @@ public class FoodResourceIntTest {
             .name(DEFAULT_NAME)
             .image(DEFAULT_IMAGE)
             .description(DEFAULT_DESCRIPTION)
-            .status(DEFAULT_STATUS);
+            .status(DEFAULT_STATUS)
+            .isRecommended(DEFAULT_IS_RECOMMENDED);
         return food;
     }
 
@@ -127,6 +131,7 @@ public class FoodResourceIntTest {
         assertThat(testFood.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testFood.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testFood.isStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testFood.isIsRecommended()).isEqualTo(DEFAULT_IS_RECOMMENDED);
     }
 
     @Test
@@ -163,7 +168,8 @@ public class FoodResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())))
+            .andExpect(jsonPath("$.[*].isRecommended").value(hasItem(DEFAULT_IS_RECOMMENDED.booleanValue())));
     }
 
     @Test
@@ -180,7 +186,8 @@ public class FoodResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()))
+            .andExpect(jsonPath("$.isRecommended").value(DEFAULT_IS_RECOMMENDED.booleanValue()));
     }
 
     @Test
@@ -204,7 +211,8 @@ public class FoodResourceIntTest {
             .name(UPDATED_NAME)
             .image(UPDATED_IMAGE)
             .description(UPDATED_DESCRIPTION)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .isRecommended(UPDATED_IS_RECOMMENDED);
         FoodDTO foodDTO = foodMapper.foodToFoodDTO(updatedFood);
 
         restFoodMockMvc.perform(put("/api/foods")
@@ -220,6 +228,7 @@ public class FoodResourceIntTest {
         assertThat(testFood.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testFood.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testFood.isStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testFood.isIsRecommended()).isEqualTo(UPDATED_IS_RECOMMENDED);
     }
 
     @Test

@@ -22,6 +22,7 @@
             "cantRepetition": "Cant Repetition",
             "status": "Status",
             "isDairy": "Is Dairy",
+            "isRecommended": "Is Recommended",
             "programFeedBack": "Program Feed Back",
             "exercise": "Exercise",
             "userApp": "User App",

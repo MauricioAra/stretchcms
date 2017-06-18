@@ -42,6 +42,9 @@ public class Program implements Serializable {
     @Column(name = "is_dairy")
     private Boolean isDairy;
 
+    @Column(name = "is_recommended")
+    private Boolean isRecommended;
+
     @OneToMany(mappedBy = "program")
     @JsonIgnore
     private Set<ProgramFeedBack> programFeedBacks = new HashSet<>();
@@ -156,6 +159,19 @@ public class Program implements Serializable {
 
     public void setIsDairy(Boolean isDairy) {
         this.isDairy = isDairy;
+    }
+
+    public Boolean isIsRecommended() {
+        return isRecommended;
+    }
+
+    public Program isRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+        return this;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
     }
 
     public Set<ProgramFeedBack> getProgramFeedBacks() {
@@ -277,6 +293,7 @@ public class Program implements Serializable {
             ", cantRepetition='" + cantRepetition + "'" +
             ", status='" + status + "'" +
             ", isDairy='" + isDairy + "'" +
+            ", isRecommended='" + isRecommended + "'" +
             '}';
     }
 }

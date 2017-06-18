@@ -108,6 +108,7 @@
                                 image: null,
                                 description: null,
                                 status: null,
+                                isRecommended: null,
                                 id: null
                             };
                         }
