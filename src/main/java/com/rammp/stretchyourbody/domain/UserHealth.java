@@ -3,6 +3,7 @@ package com.rammp.stretchyourbody.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +22,8 @@ public class UserHealth implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "work_hours")
+    @NotNull
+    @Column(name = "work_hours", nullable = false)
     private Integer workHours;
 
     @Column(name = "does_work_out")

@@ -171,6 +171,120 @@ public class ExerciseResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = exerciseRepository.findAll().size();
+        // set the field null
+        exercise.setName(null);
+
+        // Create the Exercise, which fails.
+        ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(exercise);
+
+        restExerciseMockMvc.perform(post("/api/exercises")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(exerciseDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Exercise> exerciseList = exerciseRepository.findAll();
+        assertThat(exerciseList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkImageIsRequired() throws Exception {
+        int databaseSizeBeforeTest = exerciseRepository.findAll().size();
+        // set the field null
+        exercise.setImage(null);
+
+        // Create the Exercise, which fails.
+        ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(exercise);
+
+        restExerciseMockMvc.perform(post("/api/exercises")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(exerciseDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Exercise> exerciseList = exerciseRepository.findAll();
+        assertThat(exerciseList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTimeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = exerciseRepository.findAll().size();
+        // set the field null
+        exercise.setTime(null);
+
+        // Create the Exercise, which fails.
+        ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(exercise);
+
+        restExerciseMockMvc.perform(post("/api/exercises")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(exerciseDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Exercise> exerciseList = exerciseRepository.findAll();
+        assertThat(exerciseList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkRepetitionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = exerciseRepository.findAll().size();
+        // set the field null
+        exercise.setRepetition(null);
+
+        // Create the Exercise, which fails.
+        ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(exercise);
+
+        restExerciseMockMvc.perform(post("/api/exercises")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(exerciseDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Exercise> exerciseList = exerciseRepository.findAll();
+        assertThat(exerciseList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDifficultyIsRequired() throws Exception {
+        int databaseSizeBeforeTest = exerciseRepository.findAll().size();
+        // set the field null
+        exercise.setDifficulty(null);
+
+        // Create the Exercise, which fails.
+        ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(exercise);
+
+        restExerciseMockMvc.perform(post("/api/exercises")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(exerciseDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Exercise> exerciseList = exerciseRepository.findAll();
+        assertThat(exerciseList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCalificationIsRequired() throws Exception {
+        int databaseSizeBeforeTest = exerciseRepository.findAll().size();
+        // set the field null
+        exercise.setCalification(null);
+
+        // Create the Exercise, which fails.
+        ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(exercise);
+
+        restExerciseMockMvc.perform(post("/api/exercises")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(exerciseDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Exercise> exerciseList = exerciseRepository.findAll();
+        assertThat(exerciseList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllExercises() throws Exception {
         // Initialize the database
         exerciseRepository.saveAndFlush(exercise);

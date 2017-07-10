@@ -1,6 +1,7 @@
 package com.rammp.stretchyourbody.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +14,10 @@ public class CategoryDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String image;
 
     private Boolean status;

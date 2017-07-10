@@ -2,6 +2,7 @@ package com.rammp.stretchyourbody.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,10 +21,12 @@ public class Calendar implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "jhi_date")
+    @NotNull
+    @Column(name = "jhi_date", nullable = false)
     private String date;
 
-    @Column(name = "hour")
+    @NotNull
+    @Column(name = "hour", nullable = false)
     private String hour;
 
     @Column(name = "status")

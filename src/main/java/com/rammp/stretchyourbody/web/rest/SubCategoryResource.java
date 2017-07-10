@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -43,7 +44,7 @@ public class SubCategoryResource {
      */
     @PostMapping("/sub-categories")
     @Timed
-    public ResponseEntity<SubCategoryDTO> createSubCategory(@RequestBody SubCategoryDTO subCategoryDTO) throws URISyntaxException {
+    public ResponseEntity<SubCategoryDTO> createSubCategory(@Valid @RequestBody SubCategoryDTO subCategoryDTO) throws URISyntaxException {
         log.debug("REST request to save SubCategory : {}", subCategoryDTO);
         if (subCategoryDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new subCategory cannot already have an ID")).body(null);
@@ -65,7 +66,7 @@ public class SubCategoryResource {
      */
     @PutMapping("/sub-categories")
     @Timed
-    public ResponseEntity<SubCategoryDTO> updateSubCategory(@RequestBody SubCategoryDTO subCategoryDTO) throws URISyntaxException {
+    public ResponseEntity<SubCategoryDTO> updateSubCategory(@Valid @RequestBody SubCategoryDTO subCategoryDTO) throws URISyntaxException {
         log.debug("REST request to update SubCategory : {}", subCategoryDTO);
         if (subCategoryDTO.getId() == null) {
             return createSubCategory(subCategoryDTO);

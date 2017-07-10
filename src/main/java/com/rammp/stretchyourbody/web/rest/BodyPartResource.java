@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -43,7 +44,7 @@ public class BodyPartResource {
      */
     @PostMapping("/body-parts")
     @Timed
-    public ResponseEntity<BodyPartDTO> createBodyPart(@RequestBody BodyPartDTO bodyPartDTO) throws URISyntaxException {
+    public ResponseEntity<BodyPartDTO> createBodyPart(@Valid @RequestBody BodyPartDTO bodyPartDTO) throws URISyntaxException {
         log.debug("REST request to save BodyPart : {}", bodyPartDTO);
         if (bodyPartDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new bodyPart cannot already have an ID")).body(null);
@@ -65,7 +66,7 @@ public class BodyPartResource {
      */
     @PutMapping("/body-parts")
     @Timed
-    public ResponseEntity<BodyPartDTO> updateBodyPart(@RequestBody BodyPartDTO bodyPartDTO) throws URISyntaxException {
+    public ResponseEntity<BodyPartDTO> updateBodyPart(@Valid @RequestBody BodyPartDTO bodyPartDTO) throws URISyntaxException {
         log.debug("REST request to update BodyPart : {}", bodyPartDTO);
         if (bodyPartDTO.getId() == null) {
             return createBodyPart(bodyPartDTO);

@@ -136,6 +136,25 @@ public class FoodTagResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = foodTagRepository.findAll().size();
+        // set the field null
+        foodTag.setName(null);
+
+        // Create the FoodTag, which fails.
+        FoodTagDTO foodTagDTO = foodTagMapper.foodTagToFoodTagDTO(foodTag);
+
+        restFoodTagMockMvc.perform(post("/api/food-tags")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(foodTagDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<FoodTag> foodTagList = foodTagRepository.findAll();
+        assertThat(foodTagList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllFoodTags() throws Exception {
         // Initialize the database
         foodTagRepository.saveAndFlush(foodTag);

@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -17,31 +17,69 @@
             <label class="control-label" data-translate="stretchCmsApp.program.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="vm.program.name"
-                    />
+                    required/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="stretchCmsApp.program.intDate" for="field_intDate">Int Date</label>
             <input type="text" class="form-control" name="intDate" id="field_intDate"
                     ng-model="vm.program.intDate"
-                    />
+                    required/>
+            <div ng-show="editForm.intDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.intDate.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="stretchCmsApp.program.finishDate" for="field_finishDate">Finish Date</label>
             <input type="text" class="form-control" name="finishDate" id="field_finishDate"
                     ng-model="vm.program.finishDate"
-                    />
+                    required/>
+            <div ng-show="editForm.finishDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.finishDate.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="stretchCmsApp.program.interval" for="field_interval">Interval</label>
             <input type="number" class="form-control" name="interval" id="field_interval"
                     ng-model="vm.program.interval"
-                    />
+                    required/>
+            <div ng-show="editForm.interval.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.interval.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.interval.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="stretchCmsApp.program.cantRepetition" for="field_cantRepetition">Cant Repetition</label>
             <input type="number" class="form-control" name="cantRepetition" id="field_cantRepetition"
                     ng-model="vm.program.cantRepetition"
-                    />
+                    required/>
+            <div ng-show="editForm.cantRepetition.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cantRepetition.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cantRepetition.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="stretchCmsApp.program.status" for="field_status">Status</label>

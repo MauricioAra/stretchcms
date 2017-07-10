@@ -171,6 +171,101 @@ public class ProgramResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = programRepository.findAll().size();
+        // set the field null
+        program.setName(null);
+
+        // Create the Program, which fails.
+        ProgramDTO programDTO = programMapper.programToProgramDTO(program);
+
+        restProgramMockMvc.perform(post("/api/programs")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(programDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Program> programList = programRepository.findAll();
+        assertThat(programList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkIntDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = programRepository.findAll().size();
+        // set the field null
+        program.setIntDate(null);
+
+        // Create the Program, which fails.
+        ProgramDTO programDTO = programMapper.programToProgramDTO(program);
+
+        restProgramMockMvc.perform(post("/api/programs")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(programDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Program> programList = programRepository.findAll();
+        assertThat(programList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkFinishDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = programRepository.findAll().size();
+        // set the field null
+        program.setFinishDate(null);
+
+        // Create the Program, which fails.
+        ProgramDTO programDTO = programMapper.programToProgramDTO(program);
+
+        restProgramMockMvc.perform(post("/api/programs")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(programDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Program> programList = programRepository.findAll();
+        assertThat(programList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkIntervalIsRequired() throws Exception {
+        int databaseSizeBeforeTest = programRepository.findAll().size();
+        // set the field null
+        program.setInterval(null);
+
+        // Create the Program, which fails.
+        ProgramDTO programDTO = programMapper.programToProgramDTO(program);
+
+        restProgramMockMvc.perform(post("/api/programs")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(programDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Program> programList = programRepository.findAll();
+        assertThat(programList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCantRepetitionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = programRepository.findAll().size();
+        // set the field null
+        program.setCantRepetition(null);
+
+        // Create the Program, which fails.
+        ProgramDTO programDTO = programMapper.programToProgramDTO(program);
+
+        restProgramMockMvc.perform(post("/api/programs")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(programDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Program> programList = programRepository.findAll();
+        assertThat(programList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllPrograms() throws Exception {
         // Initialize the database
         programRepository.saveAndFlush(program);

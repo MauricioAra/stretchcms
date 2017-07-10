@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -43,7 +44,7 @@ public class ProgramResource {
      */
     @PostMapping("/programs")
     @Timed
-    public ResponseEntity<ProgramDTO> createProgram(@RequestBody ProgramDTO programDTO) throws URISyntaxException {
+    public ResponseEntity<ProgramDTO> createProgram(@Valid @RequestBody ProgramDTO programDTO) throws URISyntaxException {
         log.debug("REST request to save Program : {}", programDTO);
         if (programDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new program cannot already have an ID")).body(null);
@@ -65,7 +66,7 @@ public class ProgramResource {
      */
     @PutMapping("/programs")
     @Timed
-    public ResponseEntity<ProgramDTO> updateProgram(@RequestBody ProgramDTO programDTO) throws URISyntaxException {
+    public ResponseEntity<ProgramDTO> updateProgram(@Valid @RequestBody ProgramDTO programDTO) throws URISyntaxException {
         log.debug("REST request to update Program : {}", programDTO);
         if (programDTO.getId() == null) {
             return createProgram(programDTO);

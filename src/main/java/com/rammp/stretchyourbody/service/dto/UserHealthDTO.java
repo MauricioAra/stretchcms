@@ -1,6 +1,7 @@
 package com.rammp.stretchyourbody.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +14,7 @@ public class UserHealthDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private Integer workHours;
 
     private Boolean doesWorkOut;
