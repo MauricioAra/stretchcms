@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -17,13 +17,25 @@
             <label class="control-label" data-translate="stretchCmsApp.calendar.date" for="field_date">Date</label>
             <input type="text" class="form-control" name="date" id="field_date"
                     ng-model="vm.calendar.date"
-                    />
+                    required/>
+            <div ng-show="editForm.date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.date.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="stretchCmsApp.calendar.hour" for="field_hour">Hour</label>
             <input type="text" class="form-control" name="hour" id="field_hour"
                     ng-model="vm.calendar.hour"
-                    />
+                    required/>
+            <div ng-show="editForm.hour.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.hour.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="stretchCmsApp.calendar.status" for="field_status">Status</label>

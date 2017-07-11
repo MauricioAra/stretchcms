@@ -1,6 +1,7 @@
 package com.rammp.stretchyourbody.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,14 +14,19 @@ public class ProgramDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String intDate;
 
+    @NotNull
     private String finishDate;
 
+    @NotNull
     private Integer interval;
 
+    @NotNull
     private Integer cantRepetition;
 
     private Boolean status;

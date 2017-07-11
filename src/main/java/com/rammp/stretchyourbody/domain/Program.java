@@ -3,6 +3,7 @@ package com.rammp.stretchyourbody.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,19 +22,24 @@ public class Program implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "int_date")
+    @NotNull
+    @Column(name = "int_date", nullable = false)
     private String intDate;
 
-    @Column(name = "finish_date")
+    @NotNull
+    @Column(name = "finish_date", nullable = false)
     private String finishDate;
 
-    @Column(name = "jhi_interval")
+    @NotNull
+    @Column(name = "jhi_interval", nullable = false)
     private Integer interval;
 
-    @Column(name = "cant_repetition")
+    @NotNull
+    @Column(name = "cant_repetition", nullable = false)
     private Integer cantRepetition;
 
     @Column(name = "status")

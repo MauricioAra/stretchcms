@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -43,7 +44,7 @@ public class ExerciseResource {
      */
     @PostMapping("/exercises")
     @Timed
-    public ResponseEntity<ExerciseDTO> createExercise(@RequestBody ExerciseDTO exerciseDTO) throws URISyntaxException {
+    public ResponseEntity<ExerciseDTO> createExercise(@Valid @RequestBody ExerciseDTO exerciseDTO) throws URISyntaxException {
         log.debug("REST request to save Exercise : {}", exerciseDTO);
         if (exerciseDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new exercise cannot already have an ID")).body(null);
@@ -65,7 +66,7 @@ public class ExerciseResource {
      */
     @PutMapping("/exercises")
     @Timed
-    public ResponseEntity<ExerciseDTO> updateExercise(@RequestBody ExerciseDTO exerciseDTO) throws URISyntaxException {
+    public ResponseEntity<ExerciseDTO> updateExercise(@Valid @RequestBody ExerciseDTO exerciseDTO) throws URISyntaxException {
         log.debug("REST request to update Exercise : {}", exerciseDTO);
         if (exerciseDTO.getId() == null) {
             return createExercise(exerciseDTO);

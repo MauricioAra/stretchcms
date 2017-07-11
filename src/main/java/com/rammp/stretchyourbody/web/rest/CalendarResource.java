@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -43,7 +44,7 @@ public class CalendarResource {
      */
     @PostMapping("/calendars")
     @Timed
-    public ResponseEntity<CalendarDTO> createCalendar(@RequestBody CalendarDTO calendarDTO) throws URISyntaxException {
+    public ResponseEntity<CalendarDTO> createCalendar(@Valid @RequestBody CalendarDTO calendarDTO) throws URISyntaxException {
         log.debug("REST request to save Calendar : {}", calendarDTO);
         if (calendarDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new calendar cannot already have an ID")).body(null);
@@ -65,7 +66,7 @@ public class CalendarResource {
      */
     @PutMapping("/calendars")
     @Timed
-    public ResponseEntity<CalendarDTO> updateCalendar(@RequestBody CalendarDTO calendarDTO) throws URISyntaxException {
+    public ResponseEntity<CalendarDTO> updateCalendar(@Valid @RequestBody CalendarDTO calendarDTO) throws URISyntaxException {
         log.debug("REST request to update Calendar : {}", calendarDTO);
         if (calendarDTO.getId() == null) {
             return createCalendar(calendarDTO);

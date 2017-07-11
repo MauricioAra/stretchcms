@@ -146,6 +146,44 @@ public class SubCategoryResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = subCategoryRepository.findAll().size();
+        // set the field null
+        subCategory.setName(null);
+
+        // Create the SubCategory, which fails.
+        SubCategoryDTO subCategoryDTO = subCategoryMapper.subCategoryToSubCategoryDTO(subCategory);
+
+        restSubCategoryMockMvc.perform(post("/api/sub-categories")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(subCategoryDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<SubCategory> subCategoryList = subCategoryRepository.findAll();
+        assertThat(subCategoryList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkImageIsRequired() throws Exception {
+        int databaseSizeBeforeTest = subCategoryRepository.findAll().size();
+        // set the field null
+        subCategory.setImage(null);
+
+        // Create the SubCategory, which fails.
+        SubCategoryDTO subCategoryDTO = subCategoryMapper.subCategoryToSubCategoryDTO(subCategory);
+
+        restSubCategoryMockMvc.perform(post("/api/sub-categories")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(subCategoryDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<SubCategory> subCategoryList = subCategoryRepository.findAll();
+        assertThat(subCategoryList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllSubCategories() throws Exception {
         // Initialize the database
         subCategoryRepository.saveAndFlush(subCategory);

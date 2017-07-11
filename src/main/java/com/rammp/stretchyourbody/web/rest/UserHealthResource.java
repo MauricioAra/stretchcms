@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -44,7 +45,7 @@ public class UserHealthResource {
      */
     @PostMapping("/user-healths")
     @Timed
-    public ResponseEntity<UserHealthDTO> createUserHealth(@RequestBody UserHealthDTO userHealthDTO) throws URISyntaxException {
+    public ResponseEntity<UserHealthDTO> createUserHealth(@Valid @RequestBody UserHealthDTO userHealthDTO) throws URISyntaxException {
         log.debug("REST request to save UserHealth : {}", userHealthDTO);
         if (userHealthDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new userHealth cannot already have an ID")).body(null);
@@ -66,7 +67,7 @@ public class UserHealthResource {
      */
     @PutMapping("/user-healths")
     @Timed
-    public ResponseEntity<UserHealthDTO> updateUserHealth(@RequestBody UserHealthDTO userHealthDTO) throws URISyntaxException {
+    public ResponseEntity<UserHealthDTO> updateUserHealth(@Valid @RequestBody UserHealthDTO userHealthDTO) throws URISyntaxException {
         log.debug("REST request to update UserHealth : {}", userHealthDTO);
         if (userHealthDTO.getId() == null) {
             return createUserHealth(userHealthDTO);

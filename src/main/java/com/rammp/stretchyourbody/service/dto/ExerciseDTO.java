@@ -1,6 +1,7 @@
 package com.rammp.stretchyourbody.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,16 +14,22 @@ public class ExerciseDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String image;
 
+    @NotNull
     private String time;
 
+    @NotNull
     private Integer repetition;
 
+    @NotNull
     private String difficulty;
 
+    @NotNull
     private Integer calification;
 
     private Boolean status;

@@ -151,6 +151,25 @@ public class UserHealthResourceIntTest {
 
     @Test
     @Transactional
+    public void checkWorkHoursIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userHealthRepository.findAll().size();
+        // set the field null
+        userHealth.setWorkHours(null);
+
+        // Create the UserHealth, which fails.
+        UserHealthDTO userHealthDTO = userHealthMapper.userHealthToUserHealthDTO(userHealth);
+
+        restUserHealthMockMvc.perform(post("/api/user-healths")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userHealthDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserHealth> userHealthList = userHealthRepository.findAll();
+        assertThat(userHealthList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllUserHealths() throws Exception {
         // Initialize the database
         userHealthRepository.saveAndFlush(userHealth);

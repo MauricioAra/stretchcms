@@ -1,6 +1,6 @@
 entity UserApp{
-	name String,
-    lastName String,
+	name String required,
+    lastName String required,
     age String,
     gender String,
     weight Double,
@@ -18,55 +18,55 @@ entity ProgramFeedBack{
 }
 
 entity UserHealth{
-	workHours Integer,
+	workHours Integer required,
     doesWorkOut Boolean,
     isSmoker Boolean,
     isHealthFood Boolean
 }
 
 entity Category{
-	name String,
-    image String,
+	name String required,
+    image String required,
     status Boolean
 }
 
 entity SubCategory{
-	name String,
-    image String,
+	name String required,
+    image String required,
     status Boolean
 }
 
 entity BodyPart{
-	name String,
-    image String,
+	name String required,
+    image String required,
     status Boolean
 }
 
 entity Exercise{
-	name String,
-    image String,
-    time String,
-    repetition Integer,
-    difficulty String,
-    calification Integer,
+	name String required,
+    image String required,
+    time String required,
+    repetition Integer required,
+    difficulty String required,
+    calification Integer required,
     status Boolean,
     isRecommended Boolean
 }
 
 entity Program{
-	name String,
-    intDate String,
-    finishDate String,
-    interval Integer,
-    cantRepetition Integer,
+	name String required,
+    intDate String required,
+    finishDate String required,
+    interval Integer required,
+    cantRepetition Integer required,
     status Boolean,
     isDairy Boolean,
     isRecommended Boolean
 }
 
 entity Calendar{
-	date String,
-    hour String,
+	date String required,
+    hour String required,
     status Boolean
 }
 
@@ -79,7 +79,7 @@ entity Food{
 }
 
 entity FoodTag{
-	name String
+	name String required
 }
 
 relationship OneToOne {

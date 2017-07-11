@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -43,7 +44,7 @@ public class UserAppResource {
      */
     @PostMapping("/user-apps")
     @Timed
-    public ResponseEntity<UserAppDTO> createUserApp(@RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
+    public ResponseEntity<UserAppDTO> createUserApp(@Valid @RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
         log.debug("REST request to save UserApp : {}", userAppDTO);
         if (userAppDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new userApp cannot already have an ID")).body(null);
@@ -65,7 +66,7 @@ public class UserAppResource {
      */
     @PutMapping("/user-apps")
     @Timed
-    public ResponseEntity<UserAppDTO> updateUserApp(@RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
+    public ResponseEntity<UserAppDTO> updateUserApp(@Valid @RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
         log.debug("REST request to update UserApp : {}", userAppDTO);
         if (userAppDTO.getId() == null) {
             return createUserApp(userAppDTO);

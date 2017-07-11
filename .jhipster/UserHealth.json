@@ -20,7 +20,10 @@
     "fields": [
         {
             "fieldName": "workHours",
-            "fieldType": "Integer"
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "doesWorkOut",

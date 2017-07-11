@@ -161,6 +161,44 @@ public class UserAppResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userAppRepository.findAll().size();
+        // set the field null
+        userApp.setName(null);
+
+        // Create the UserApp, which fails.
+        UserAppDTO userAppDTO = userAppMapper.userAppToUserAppDTO(userApp);
+
+        restUserAppMockMvc.perform(post("/api/user-apps")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userAppDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserApp> userAppList = userAppRepository.findAll();
+        assertThat(userAppList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkLastNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userAppRepository.findAll().size();
+        // set the field null
+        userApp.setLastName(null);
+
+        // Create the UserApp, which fails.
+        UserAppDTO userAppDTO = userAppMapper.userAppToUserAppDTO(userApp);
+
+        restUserAppMockMvc.perform(post("/api/user-apps")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userAppDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserApp> userAppList = userAppRepository.findAll();
+        assertThat(userAppList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllUserApps() throws Exception {
         // Initialize the database
         userAppRepository.saveAndFlush(userApp);

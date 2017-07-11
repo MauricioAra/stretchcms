@@ -146,6 +146,44 @@ public class BodyPartResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = bodyPartRepository.findAll().size();
+        // set the field null
+        bodyPart.setName(null);
+
+        // Create the BodyPart, which fails.
+        BodyPartDTO bodyPartDTO = bodyPartMapper.bodyPartToBodyPartDTO(bodyPart);
+
+        restBodyPartMockMvc.perform(post("/api/body-parts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(bodyPartDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<BodyPart> bodyPartList = bodyPartRepository.findAll();
+        assertThat(bodyPartList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkImageIsRequired() throws Exception {
+        int databaseSizeBeforeTest = bodyPartRepository.findAll().size();
+        // set the field null
+        bodyPart.setImage(null);
+
+        // Create the BodyPart, which fails.
+        BodyPartDTO bodyPartDTO = bodyPartMapper.bodyPartToBodyPartDTO(bodyPart);
+
+        restBodyPartMockMvc.perform(post("/api/body-parts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(bodyPartDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<BodyPart> bodyPartList = bodyPartRepository.findAll();
+        assertThat(bodyPartList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBodyParts() throws Exception {
         // Initialize the database
         bodyPartRepository.saveAndFlush(bodyPart);

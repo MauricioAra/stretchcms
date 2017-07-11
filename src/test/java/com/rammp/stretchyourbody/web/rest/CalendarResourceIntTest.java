@@ -146,6 +146,44 @@ public class CalendarResourceIntTest {
 
     @Test
     @Transactional
+    public void checkDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = calendarRepository.findAll().size();
+        // set the field null
+        calendar.setDate(null);
+
+        // Create the Calendar, which fails.
+        CalendarDTO calendarDTO = calendarMapper.calendarToCalendarDTO(calendar);
+
+        restCalendarMockMvc.perform(post("/api/calendars")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(calendarDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Calendar> calendarList = calendarRepository.findAll();
+        assertThat(calendarList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkHourIsRequired() throws Exception {
+        int databaseSizeBeforeTest = calendarRepository.findAll().size();
+        // set the field null
+        calendar.setHour(null);
+
+        // Create the Calendar, which fails.
+        CalendarDTO calendarDTO = calendarMapper.calendarToCalendarDTO(calendar);
+
+        restCalendarMockMvc.perform(post("/api/calendars")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(calendarDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Calendar> calendarList = calendarRepository.findAll();
+        assertThat(calendarList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllCalendars() throws Exception {
         // Initialize the database
         calendarRepository.saveAndFlush(calendar);
