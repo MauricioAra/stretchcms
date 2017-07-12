@@ -18,7 +18,7 @@ public interface ProgramService {
 
     /**
      *  Get all the programs.
-     *  
+     *
      *  @return the list of entities
      */
     List<ProgramDTO> findAll();
@@ -37,4 +37,6 @@ public interface ProgramService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    List<ProgramDTO> findByUser(Long id);
 }

@@ -13,6 +13,8 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface ProgramRepository extends JpaRepository<Program,Long> {
 
+    public List<Program> findByUserAppId(Long id);
+
     @Query("select distinct program from Program program left join fetch program.exercises")
     List<Program> findAllWithEagerRelationships();
 
