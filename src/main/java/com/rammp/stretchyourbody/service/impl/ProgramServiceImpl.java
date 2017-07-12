@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class ProgramServiceImpl implements ProgramService{
 
     private final Logger log = LoggerFactory.getLogger(ProgramServiceImpl.class);
-    
+
     private final ProgramRepository programRepository;
 
     private final ProgramMapper programMapper;
@@ -49,7 +49,7 @@ public class ProgramServiceImpl implements ProgramService{
 
     /**
      *  Get all the programs.
-     *  
+     *
      *  @return the list of entities
      */
     @Override

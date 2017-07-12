@@ -11,5 +11,5 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface ExerciseRepository extends JpaRepository<Exercise,Long> {
-
+    public List<Exercise> findByIsRecommended(boolean isRecom);
 }

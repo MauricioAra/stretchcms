@@ -19,4 +19,6 @@ public interface ProgramRepository extends JpaRepository<Program,Long> {
     @Query("select program from Program program left join fetch program.exercises where program.id =:id")
     Program findOneWithEagerRelationships(@Param("id") Long id);
 
+    public List<Program> findByIsRecommended(boolean isRecom);
+
 }
