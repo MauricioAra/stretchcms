@@ -19,4 +19,6 @@ public interface FoodRepository extends JpaRepository<Food,Long> {
     @Query("select food from Food food left join fetch food.foodTags where food.id =:id")
     Food findOneWithEagerRelationships(@Param("id") Long id);
 
+    List<Food> findByIsRecommended (boolean isRecom);
+
 }
