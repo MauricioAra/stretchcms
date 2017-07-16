@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class ProgramServiceImpl implements ProgramService{
 
     private final Logger log = LoggerFactory.getLogger(ProgramServiceImpl.class);
-    
+
     private final ProgramRepository programRepository;
 
     private final ProgramMapper programMapper;
@@ -49,7 +49,7 @@ public class ProgramServiceImpl implements ProgramService{
 
     /**
      *  Get all the programs.
-     *  
+     *
      *  @return the list of entities
      */
     @Override
@@ -87,5 +87,13 @@ public class ProgramServiceImpl implements ProgramService{
     public void delete(Long id) {
         log.debug("Request to delete Program : {}", id);
         programRepository.delete(id);
+    }
+
+
+    public List<ProgramDTO> findByUser(Long id){
+        List<ProgramDTO> result = programRepository.findByUserAppId(id).stream()
+            .map(programMapper::programToProgramDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+        return result;
     }
 }
