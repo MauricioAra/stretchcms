@@ -21,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManagerFactory;
 import java.time.ZonedDateTime;
 import java.util.*;
 
@@ -43,13 +44,16 @@ public class UserService {
 
     private final UserAppRepository userAppRepository;
 
+    private final EntityManagerFactory entityManagerFactory;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository,UserAppRepository userAppRepository) {
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, UserAppRepository userAppRepository, EntityManagerFactory entityManagerFactory) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.socialService = socialService;
         this.authorityRepository = authorityRepository;
         this.userAppRepository = userAppRepository;
+        this.entityManagerFactory = entityManagerFactory;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -251,7 +255,7 @@ public class UserService {
     public Long findUserByUserName(String username){
 
         userRepository.findOneByLogin(username).ifPresent(user -> {
-            idUserLogin = user.getId();
+            idUserLogin = (Long) entityManagerFactory.getPersistenceUnitUtil().getIdentifier(user);
         });
 
         Long userWebId = findUserApp(idUserLogin);
@@ -262,7 +266,7 @@ public class UserService {
     private Long findUserApp(Long idUserLogin){
         Long idWeb = null;
         List<UserApp> users = userAppRepository.findAll();
-        for(int i = 0; i < users.size();i++){
+        for(int i = 0; i < users.size();i++) {
             if (users.get(i).getUser().getId() == idUserLogin){
                 idWeb = users.get(i).getId();
                 break;
