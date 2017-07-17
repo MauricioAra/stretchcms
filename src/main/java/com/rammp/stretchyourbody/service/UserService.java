@@ -268,7 +268,7 @@ public class UserService {
         List<UserApp> users = userAppRepository.findAll();
         for(int i = 0; i < users.size();i++) {
             if (users.get(i).getUser().getId() == idUserLogin){
-                idWeb = users.get(i).getId();
+                idWeb = users.get(i).getUser().getId();
                 break;
             }
         }
