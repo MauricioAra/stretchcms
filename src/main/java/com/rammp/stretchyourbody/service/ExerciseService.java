@@ -18,7 +18,7 @@ public interface ExerciseService {
 
     /**
      *  Get all the exercises.
-     *  
+     *
      *  @return the list of entities
      */
     List<ExerciseDTO> findAll();
@@ -37,4 +37,7 @@ public interface ExerciseService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+
+    List<ExerciseDTO> findByBodyPart(Long id);
 }

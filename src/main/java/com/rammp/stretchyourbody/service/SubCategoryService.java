@@ -18,7 +18,7 @@ public interface SubCategoryService {
 
     /**
      *  Get all the subCategories.
-     *  
+     *
      *  @return the list of entities
      */
     List<SubCategoryDTO> findAll();
@@ -37,4 +37,7 @@ public interface SubCategoryService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+
+    List<SubCategoryDTO>  subCategoryByCategory(Long id);
 }

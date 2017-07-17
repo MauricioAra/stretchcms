@@ -18,7 +18,7 @@ public interface BodyPartService {
 
     /**
      *  Get all the bodyParts.
-     *  
+     *
      *  @return the list of entities
      */
     List<BodyPartDTO> findAll();
@@ -37,4 +37,8 @@ public interface BodyPartService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    List<BodyPartDTO> findBySubcategory(Long id);
+
+
 }
