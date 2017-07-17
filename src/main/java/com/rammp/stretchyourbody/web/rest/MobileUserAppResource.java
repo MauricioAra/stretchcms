@@ -8,6 +8,11 @@ import com.rammp.stretchyourbody.web.rest.util.HeaderUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.net.URISyntaxException;
+
+import static org.hibernate.id.IdentifierGenerator.ENTITY_NAME;
+
 /**
  * Created by mbp on 7/10/17.
  */
@@ -27,4 +32,18 @@ public class MobileUserAppResource {
     public UserAppDTO getUser(@PathVariable Long id) {
         return userAppService.findOne(id);
     }
+
+
+    @PutMapping("/updateUser")
+    @Timed
+    public ResponseEntity<UserAppDTO> updateUserApp(@Valid @RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
+
+
+        UserAppDTO result = userAppService.save(userAppDTO);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, userAppDTO.getId().toString()))
+            .body(result);
+    }
+
 }
+
