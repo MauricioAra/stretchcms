@@ -6,14 +6,16 @@ import com.rammp.stretchyourbody.domain.Program;
 import com.rammp.stretchyourbody.repository.ExerciseRepository;
 import com.rammp.stretchyourbody.repository.FoodRepository;
 import com.rammp.stretchyourbody.repository.ProgramRepository;
+import com.rammp.stretchyourbody.service.dto.FoodDTO;
 import com.rammp.stretchyourbody.service.dto.RecommendedDTO;
+import com.rammp.stretchyourbody.service.mapper.FoodMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-
-import static java.lang.System.out;
+import java.util.stream.Collectors;
 
 /**
  * Created by paulasegura on 11/7/17.
@@ -24,11 +26,13 @@ public class RecommendedService {
     private final ProgramRepository programRepository;
     private final FoodRepository foodRepository;
     private final ExerciseRepository exerciseRepository;
+    private final FoodMapper foodMapper;
 
-    public RecommendedService(ProgramRepository programRepository, FoodRepository foodRepository, ExerciseRepository exerciseRepository) {
+    public RecommendedService(ProgramRepository programRepository, FoodRepository foodRepository, ExerciseRepository exerciseRepository, FoodMapper foodMapper) {
         this.programRepository = programRepository;
         this.foodRepository = foodRepository;
         this.exerciseRepository = exerciseRepository;
+        this.foodMapper = foodMapper;
     }
 
 
@@ -95,4 +99,5 @@ public class RecommendedService {
 
         return recommendedDTOs;
     }
+
 }

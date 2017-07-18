@@ -18,7 +18,7 @@ public interface FoodService {
 
     /**
      *  Get all the foods.
-     *  
+     *
      *  @return the list of entities
      */
     List<FoodDTO> findAll();
@@ -37,4 +37,7 @@ public interface FoodService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    List<FoodDTO> findFoodRecommended();
+
 }
