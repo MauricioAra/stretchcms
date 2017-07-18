@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 public class SubCategoryServiceImpl implements SubCategoryService{
 
     private final Logger log = LoggerFactory.getLogger(SubCategoryServiceImpl.class);
-    
+
     private final SubCategoryRepository subCategoryRepository;
 
     private final SubCategoryMapper subCategoryMapper;
@@ -49,7 +50,7 @@ public class SubCategoryServiceImpl implements SubCategoryService{
 
     /**
      *  Get all the subCategories.
-     *  
+     *
      *  @return the list of entities
      */
     @Override
@@ -87,5 +88,12 @@ public class SubCategoryServiceImpl implements SubCategoryService{
     public void delete(Long id) {
         log.debug("Request to delete SubCategory : {}", id);
         subCategoryRepository.delete(id);
+    }
+
+    public List<SubCategoryDTO> subCategoryByCategory(Long id){
+        List<SubCategoryDTO> subCategoryDTOS = subCategoryRepository.findByCategoryIdAndStatus(id,true).stream()
+            .map(subCategoryMapper::subCategoryToSubCategoryDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+        return subCategoryDTOS;
     }
 }

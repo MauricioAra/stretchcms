@@ -11,5 +11,5 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface SubCategoryRepository extends JpaRepository<SubCategory,Long> {
-
+    List<SubCategory> findByCategoryIdAndStatus(Long id,Boolean status);
 }

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class ExerciseServiceImpl implements ExerciseService{
 
     private final Logger log = LoggerFactory.getLogger(ExerciseServiceImpl.class);
-    
+
     private final ExerciseRepository exerciseRepository;
 
     private final ExerciseMapper exerciseMapper;
@@ -49,7 +49,7 @@ public class ExerciseServiceImpl implements ExerciseService{
 
     /**
      *  Get all the exercises.
-     *  
+     *
      *  @return the list of entities
      */
     @Override
@@ -87,5 +87,15 @@ public class ExerciseServiceImpl implements ExerciseService{
     public void delete(Long id) {
         log.debug("Request to delete Exercise : {}", id);
         exerciseRepository.delete(id);
+    }
+
+
+    public List<ExerciseDTO> findByBodyPart(Long id){
+
+        List<ExerciseDTO> result = exerciseRepository.findByBodyPartId(id).stream()
+            .map(exerciseMapper::exerciseToExerciseDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+
+        return result;
     }
 }

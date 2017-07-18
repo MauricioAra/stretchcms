@@ -11,5 +11,5 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface BodyPartRepository extends JpaRepository<BodyPart,Long> {
-
+    public List<BodyPart> findBySubCategoryId(Long id);
 }

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class BodyPartServiceImpl implements BodyPartService{
 
     private final Logger log = LoggerFactory.getLogger(BodyPartServiceImpl.class);
-    
+
     private final BodyPartRepository bodyPartRepository;
 
     private final BodyPartMapper bodyPartMapper;
@@ -49,7 +49,7 @@ public class BodyPartServiceImpl implements BodyPartService{
 
     /**
      *  Get all the bodyParts.
-     *  
+     *
      *  @return the list of entities
      */
     @Override
@@ -88,4 +88,13 @@ public class BodyPartServiceImpl implements BodyPartService{
         log.debug("Request to delete BodyPart : {}", id);
         bodyPartRepository.delete(id);
     }
+
+
+    public List<BodyPartDTO> findBySubcategory(Long id){
+        List<BodyPartDTO> result = bodyPartRepository.findBySubCategoryId(id).stream()
+            .map(bodyPartMapper::bodyPartToBodyPartDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+        return result;
+    }
+
 }
