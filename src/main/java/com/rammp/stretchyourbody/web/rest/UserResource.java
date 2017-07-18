@@ -8,6 +8,7 @@ import com.rammp.stretchyourbody.security.AuthoritiesConstants;
 import com.rammp.stretchyourbody.service.MailService;
 import com.rammp.stretchyourbody.service.UserService;
 import com.rammp.stretchyourbody.service.dto.UserDTO;
+import com.rammp.stretchyourbody.service.dto.UserSingleDTO;
 import com.rammp.stretchyourbody.web.rest.vm.ManagedUserVM;
 import com.rammp.stretchyourbody.web.rest.util.HeaderUtil;
 import com.rammp.stretchyourbody.web.rest.util.PaginationUtil;
@@ -188,11 +189,11 @@ public class UserResource {
 
 
 
-    @GetMapping("/find-user/{username}")
+    @PostMapping("/find-user")
     @Timed
-    public Long findCurrentUser(@PathVariable String username) {
+    public Long findCurrentUser(@RequestBody UserSingleDTO userSingleDTO) {
 
-        Long id = userService.findUserByUserName(username);
+        Long id = userService.findUserByUserName(userSingleDTO.getUsername());
         return id;
     }
 }
