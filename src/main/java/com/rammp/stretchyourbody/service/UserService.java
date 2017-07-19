@@ -127,6 +127,10 @@ public class UserService {
         userApp.setName(newUser.getFirstName());
         userApp.setLastName(newUser.getLastName());
         userApp.setUser(newUser);
+        userApp.setAge("0");
+        userApp.setWeight(0.0);
+        userApp.setHeight(0.0);
+        userApp.setGender("Otro");
         userAppRepository.save(userApp);
     }
 
@@ -278,7 +282,7 @@ public class UserService {
         List<UserApp> users = userAppRepository.findAll();
         for(int i = 0; i < users.size();i++) {
             if (users.get(i).getUser().getId() == idUserLogin){
-                idWeb = users.get(i).getUser().getId();
+                idWeb = users.get(i).getId();
                 break;
             }
         }
