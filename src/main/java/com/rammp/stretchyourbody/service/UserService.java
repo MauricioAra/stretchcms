@@ -116,8 +116,18 @@ public class UserService {
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+        createUserApp(newUser);
         log.debug("Created Information for User: {}", newUser);
+
         return newUser;
+    }
+
+    public void createUserApp(User newUser) {
+        UserApp userApp = new UserApp();
+        userApp.setName(newUser.getFirstName());
+        userApp.setLastName(newUser.getLastName());
+        userApp.setUser(newUser);
+        userAppRepository.save(userApp);
     }
 
     public User createUser(UserDTO userDTO) {
