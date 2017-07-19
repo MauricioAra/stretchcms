@@ -30,4 +30,11 @@ public class MobileExerciseResource {
     public List<ExerciseDTO> getAllProgramsRecommended(@PathVariable Long id) {
         return exerciseService.findByBodyPart(id);
     }
+
+    @GetMapping("/exercise_by_id/{id}")
+    @Timed
+    public ExerciseDTO findOne(@PathVariable Long id) {
+        return exerciseService.findOne(id);
+    }
+
 }
