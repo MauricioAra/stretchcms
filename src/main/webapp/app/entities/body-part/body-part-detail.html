@@ -1,35 +1,54 @@
 
 <div>
-    <h2><span data-translate="stretchCmsApp.bodyPart.detail.title">Body Part</span> {{vm.bodyPart.id}}</h2>
+    <h2><span>Detalles de {{vm.bodyPart.name}}</span></h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="stretchCmsApp.bodyPart.name">Name</span></dt>
-        <dd>
-            <span>{{vm.bodyPart.name}}</span>
-        </dd>
-        <dt><span data-translate="stretchCmsApp.bodyPart.image">Image</span></dt>
-        <dd>
-            <span>{{vm.bodyPart.image}}</span>
-        </dd>
-        <dt><span data-translate="stretchCmsApp.bodyPart.status">Status</span></dt>
-        <dd>
-            <span>{{vm.bodyPart.status}}</span>
-        </dd>
-        <dt><span data-translate="stretchCmsApp.bodyPart.subCategory">Sub Category</span></dt>
-        <dd>
-            <a ui-sref="sub-category-detail({id:vm.bodyPart.subCategoryId})">{{vm.bodyPart.subCategoryName}}</a>
-        </dd>
-    </dl>
+        <div class="row" style="padding-bottom: 25px;">
+            <div class="col-md-1"><span style="font-weight: bold">Nombre:</span></div>
+            <div class="col-md-4"><span>{{vm.bodyPart.name}}</span></div>
+        </div>
+        <hr>
+        <div class="row" style="padding-bottom: 25px;">
+            <div class="col-md-1"><span style="font-weight: bold">Imagen:</span></div>
+            <div class="col-md-4"><span>{{vm.bodyPart.image}}</span></div>
+        </div>
+        <hr>
+        <div class="row" style="padding-bottom: 25px;">
+            <div class="col-md-1"><span style="font-weight: bold">Disponible:</span></div>
+            <div class="col-md-4"><span>{{vm.bodyPart.status}}</span></div>
+        </div>
+        <hr>
+        <div class="row" style="padding-bottom: 50px;">
+            <div class="col-md-1"><span style="font-weight: bold">Subcategoria:</span></div>
+            <div class="col-md-4"><a ui-sref="sub-category-detail({id:vm.bodyPart.subCategoryId})">{{vm.bodyPart.subCategoryName}}</a></div>
+        </div>
+    <!--<dl class="dl-horizontal jh-entity-details">-->
+        <!--<dt><span>Nombre</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.bodyPart.name}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span>Imagen</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.bodyPart.image}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span>Disponible</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.bodyPart.status}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span>Subcategoria</span></dt>-->
+        <!--<dd>-->
+            <!--<a ui-sref="sub-category-detail({id:vm.bodyPart.subCategoryId})">{{vm.bodyPart.subCategoryName}}</a>-->
+        <!--</dd>-->
+    <!--</dl>-->
+    <div>
+        <button type="submit"
+                ui-sref="{{ vm.previousState }}"
+                class="btn btn-info" style="background-color:#7be1e6;border-color: transparent;outline: 0;width: 106px">
+            <span></span>&nbsp;<span>Volver</span>
+        </button>
+        <button type="button" ui-sref="body-part-detail.edit({id:vm.bodyPart.id})" class="btn btn-primary" style="background-color:#a5de37;border-color: transparent;outline: 0;width: 106px">
+            <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar</span>
+        </button>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="body-part-detail.edit({id:vm.bodyPart.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-    </button>
+    </div>
 </div>

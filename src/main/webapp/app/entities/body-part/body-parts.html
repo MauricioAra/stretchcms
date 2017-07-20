@@ -1,15 +1,19 @@
 <div>
-    <h2 data-translate="stretchCmsApp.bodyPart.home.title">Body Parts</h2>
-    <jhi-alert></jhi-alert>
+    <div class="container">
+        <h2>Partes del cuerpo</h2>
+    </div>
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="body-part.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="stretchCmsApp.bodyPart.home.createLabel">
-                        Create new Body Part
+            <div class="col-md-12">
+                <div style="float: right">
+                    <button class="btn btn-primary" ui-sref="body-part.new" style="background-color:#e81e63;
+                        border-color:transparent; color:white; outline:0;width: 50px;
+                        height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px">
+                    <span class="glyphicon glyphicon-plus">
                     </span>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -18,11 +22,11 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr>
-                    <th><span data-translate="global.field.id">ID</span></th>
-                    <th><span data-translate="stretchCmsApp.bodyPart.name">Name</span></th>
-                    <th><span data-translate="stretchCmsApp.bodyPart.image">Image</span></th>
-                    <th><span data-translate="stretchCmsApp.bodyPart.status">Status</span></th>
-                    <th><span data-translate="stretchCmsApp.bodyPart.subCategory">Sub Category</span></th>
+                    <th><span>ID</span></th>
+                    <th><span>Nombre</span></th>
+                    <th><span>Imagen</span></th>
+                    <th><span>Disponible</span></th>
+                    <th><span>Subcategoria</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -39,20 +43,23 @@
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
                                     ui-sref="body-part-detail({id:bodyPart.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-eye-open"></span>
+                                    class="btn btn-info btn-sm"
+                                    style="background-color:#55dae1;border-color:transparent; color:white; outline:0">
+                                <!--<span class="glyphicon glyphicon-eye-open"></span>-->
                                 <span class="hidden-sm-down" data-translate="entity.action.view"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="body-part.edit({id:bodyPart.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
+                                    class="btn btn-primary btn-sm"
+                                    style="background-color:#a5de37;border-color:transparent; color:white; outline:0">
+                                <!--<span class="glyphicon glyphicon-pencil"></span>-->
                                 <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="body-part.delete({id:bodyPart.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                    class="btn btn-danger btn-sm"
+                                    style="background-color: #feae1b;border-color:transparent; color:white; outline:0">
+                                <!--<span class="glyphicon glyphicon-remove-circle"></span>-->
                                 <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
                             </button>
                         </div>
