@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class FoodServiceImpl implements FoodService{
 
     private final Logger log = LoggerFactory.getLogger(FoodServiceImpl.class);
-    
+
     private final FoodRepository foodRepository;
 
     private final FoodMapper foodMapper;
@@ -49,7 +49,7 @@ public class FoodServiceImpl implements FoodService{
 
     /**
      *  Get all the foods.
-     *  
+     *
      *  @return the list of entities
      */
     @Override
@@ -87,5 +87,12 @@ public class FoodServiceImpl implements FoodService{
     public void delete(Long id) {
         log.debug("Request to delete Food : {}", id);
         foodRepository.delete(id);
+    }
+
+    public List<FoodDTO> findFoodRecommended(){
+        List<FoodDTO> result = foodRepository.findByIsRecommended(true).stream()
+            .map(foodMapper::foodToFoodDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+        return result;
     }
 }
