@@ -1,12 +1,8 @@
 package com.rammp.stretchyourbody.service;
 
-import com.rammp.stretchyourbody.domain.Authority;
-import com.rammp.stretchyourbody.domain.User;
-import com.rammp.stretchyourbody.domain.UserApp;
-import com.rammp.stretchyourbody.repository.AuthorityRepository;
+import com.rammp.stretchyourbody.domain.*;
+import com.rammp.stretchyourbody.repository.*;
 import com.rammp.stretchyourbody.config.Constants;
-import com.rammp.stretchyourbody.repository.UserAppRepository;
-import com.rammp.stretchyourbody.repository.UserRepository;
 import com.rammp.stretchyourbody.security.AuthoritiesConstants;
 import com.rammp.stretchyourbody.security.SecurityUtils;
 import com.rammp.stretchyourbody.service.util.RandomUtil;
@@ -44,16 +40,22 @@ public class UserService {
 
     private final UserAppRepository userAppRepository;
 
+    private  final UserHealthRepository userHealthRepository;
+
     private final EntityManagerFactory entityManagerFactory;
 
+    private final BodyPartRepository bodyPartRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, UserAppRepository userAppRepository, EntityManagerFactory entityManagerFactory) {
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, UserAppRepository userAppRepository, EntityManagerFactory entityManagerFactory, UserHealthRepository userHealthRepository, BodyPartRepository bodyPartRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.socialService = socialService;
         this.authorityRepository = authorityRepository;
         this.userAppRepository = userAppRepository;
         this.entityManagerFactory = entityManagerFactory;
+        this.userHealthRepository = userHealthRepository;
+        this.bodyPartRepository = bodyPartRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -94,7 +96,7 @@ public class UserService {
             });
     }
 
-    public User createUser(String login, String password, String firstName, String lastName, String email,
+    public Long createUser(String login, String password, String firstName, String lastName, String email,
         String imageUrl, String langKey) {
 
         User newUser = new User();
@@ -118,8 +120,8 @@ public class UserService {
         userRepository.save(newUser);
         createUserApp(newUser);
         log.debug("Created Information for User: {}", newUser);
-
-        return newUser;
+        Long userId = findUserByUserName(newUser.getLogin());
+        return userId;
     }
 
     public void createUserApp(User newUser) {
@@ -132,6 +134,39 @@ public class UserService {
         userApp.setHeight(0.0);
         userApp.setGender("Otro");
         userAppRepository.save(userApp);
+    }
+
+    public void updateUserHealth(Long userId, String age, Double weight, Double height,
+                              String gender, Integer workHours, Boolean doesWorkOut,
+                              Boolean isSmoker, Boolean isHealthy, String bodyPartName) {
+
+        List<BodyPart> bodyPartList = bodyPartRepository.findAll();
+
+        BodyPart bodyPart = null;
+        for (BodyPart tempBodyPart : bodyPartList) {
+            if(tempBodyPart.getName().equals(bodyPartName)) {
+                bodyPart = tempBodyPart;
+            }
+        }
+
+        Set<BodyPart> bodyParts = new HashSet<BodyPart>();
+        bodyParts.add(bodyPart);
+
+        UserApp userApp = userAppRepository.findOne(userId);
+        UserHealth userHealth = new UserHealth();
+        userApp.setAge(age);
+        userApp.setWeight(weight);
+        userApp.setHeight(height);
+        userApp.setGender(gender);
+        userHealth.setBodyParts(bodyParts);
+        userHealth.setDoesWorkOut(doesWorkOut);
+        userHealth.setIsHealthFood(isHealthy);
+        userHealth.setIsSmoker(isSmoker);
+        userHealth.setWorkHours(workHours);
+        userHealth = userHealthRepository.save(userHealth);
+        userApp.setUserHealth(userHealth);
+        userAppRepository.save(userApp);
+
     }
 
     public User createUser(UserDTO userDTO) {
