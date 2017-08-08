@@ -147,10 +147,10 @@ public class AccountResource {
      * @param password the new password
      * @return the ResponseEntity with status 200 (OK), or status 400 (Bad Request) if the new password is not strong enough
      */
-    @PostMapping(path = "/account/change_password",
-        produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(path = "/account/change_password")
     @Timed
     public ResponseEntity changePassword(@RequestBody String password) {
+
         if (!checkPasswordLength(password)) {
             return new ResponseEntity<>("Incorrect password", HttpStatus.BAD_REQUEST);
         }

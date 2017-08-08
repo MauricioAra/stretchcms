@@ -255,8 +255,10 @@ public class UserService {
     }
 
     public void changePassword(String password) {
+        password = password.replaceAll("^\"|\"$", "");
+        final String fixedPass = password;
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(user -> {
-            String encryptedPassword = passwordEncoder.encode(password);
+            String encryptedPassword = passwordEncoder.encode(fixedPass);
             user.setPassword(encryptedPassword);
             log.debug("Changed password for User: {}", user);
         });
