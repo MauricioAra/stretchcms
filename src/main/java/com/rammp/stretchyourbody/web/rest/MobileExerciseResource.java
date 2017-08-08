@@ -37,4 +37,10 @@ public class MobileExerciseResource {
         return exerciseService.findOne(id);
     }
 
+    @GetMapping("/all_exercise")
+    @Timed
+    public List<ExerciseDTO> findAllExercise(){
+        return exerciseService.findAll();
+    }
+
 }
