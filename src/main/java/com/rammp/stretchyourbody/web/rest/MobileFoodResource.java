@@ -2,6 +2,7 @@ package com.rammp.stretchyourbody.web.rest;
 
 import com.rammp.stretchyourbody.service.FoodService;
 import com.rammp.stretchyourbody.service.dto.FoodDTO;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,13 @@ public class MobileFoodResource {
 
     @GetMapping("/allfood")
     @Timed
-    public List<FoodDTO> getAllFoods() {
-        return foodService.findAll();
+    public List<FoodDTO> getAllFoods(){return foodService.findAll();
     }
+
+    @GetMapping("/foodDetails/{id}")
+    @Timed
+    public FoodDTO getMyPrograms(@PathVariable Long id) {
+        return foodService.findOne(id);
+    }
+
 }
