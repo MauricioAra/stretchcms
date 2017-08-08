@@ -2,6 +2,7 @@ package com.rammp.stretchyourbody.web.rest;
 
 import com.rammp.stretchyourbody.config.Constants;
 import com.codahale.metrics.annotation.Timed;
+import com.rammp.stretchyourbody.domain.BodyPart;
 import com.rammp.stretchyourbody.domain.User;
 import com.rammp.stretchyourbody.repository.UserRepository;
 import com.rammp.stretchyourbody.security.AuthoritiesConstants;
@@ -25,7 +26,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.HandlerMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -144,6 +147,25 @@ public class UserResource {
     }
 
     /**
+     * PUT  /users : Updates an existing UserApp.
+     *
+     * @param managedUserVM the user to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated user,
+     * or with status 400 (Bad Request) if the login or email is already in use,
+     * or with status 500 (Internal Server Error) if the user couldn't be updated
+     */
+    @PutMapping("/updateUser")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<UserDTO> updateUserAppRegister(@RequestBody ManagedUserVM managedUserVM) {
+        log.debug("REST request to update User : {}", managedUserVM);
+        Optional<UserDTO> updatedUser = userService.updateUser(managedUserVM);
+
+        return ResponseUtil.wrapOrNotFound(updatedUser,
+                HeaderUtil.createAlert("userManagement.updated", managedUserVM.getLogin()));
+    }
+
+    /**
      * GET  /users : get all users.
      *
      * @param pageable the pagination information
@@ -195,5 +217,16 @@ public class UserResource {
 
         Long id = userService.findUserByUserName(userSingleDTO.getUsername());
         return id;
+    }
+
+    @PostMapping("/register-user-health/{userId}/{gender}/{age}/{weight}/{height}/{workHours}/{doesWorkOut}/{isSmoker}/{isHealthy}/{bodyPart}")
+    @Timed
+    public void registerUserHealth(@PathVariable("userId") Long userId, @PathVariable("age") String age, @PathVariable("weight") Double weight,
+                                    @PathVariable("height") Double height, @PathVariable("gender")  String gender, @PathVariable("workHours") Integer workHours,
+                                    @PathVariable("doesWorkOut") Boolean doesWorkOut, @PathVariable("isSmoker") Boolean isSmoker,
+                                    @PathVariable("isHealthy") Boolean isHealthy, @PathVariable("bodyPart") String bodyParts) {
+
+        userService.updateUserHealth(userId, age, weight, height, gender, workHours,
+            doesWorkOut, isSmoker, isHealthy, bodyParts);
     }
 }
