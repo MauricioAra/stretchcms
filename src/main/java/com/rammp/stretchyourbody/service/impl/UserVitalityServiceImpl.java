@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class UserVitalityServiceImpl implements UserVitalityService{
 
     private final Logger log = LoggerFactory.getLogger(UserVitalityServiceImpl.class);
-    
+
     private final UserVitalityRepository userVitalityRepository;
 
     private final UserVitalityMapper userVitalityMapper;
@@ -49,7 +49,7 @@ public class UserVitalityServiceImpl implements UserVitalityService{
 
     /**
      *  Get all the userVitalities.
-     *  
+     *
      *  @return the list of entities
      */
     @Override
@@ -57,6 +57,23 @@ public class UserVitalityServiceImpl implements UserVitalityService{
     public List<UserVitalityDTO> findAll() {
         log.debug("Request to get all UserVitalities");
         List<UserVitalityDTO> result = userVitalityRepository.findAll().stream()
+            .map(userVitalityMapper::userVitalityToUserVitalityDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+
+        return result;
+    }
+
+
+    /**
+     *  Get all the userVitalities.
+     *
+     *  @return the list of entities
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public List<UserVitalityDTO> findAllByUserAppName(String username) {
+        log.debug("Request to get all UserVitality : {}", username);
+        List<UserVitalityDTO> result = userVitalityRepository.findAllByUserAppName(username).stream()
             .map(userVitalityMapper::userVitalityToUserVitalityDTO)
             .collect(Collectors.toCollection(LinkedList::new));
 
