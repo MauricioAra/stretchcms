@@ -3,6 +3,7 @@ package com.rammp.stretchyourbody.repository;
 import com.rammp.stretchyourbody.domain.UserVitality;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface UserVitalityRepository extends JpaRepository<UserVitality,Long> {
 
+List<UserVitality>findAllByUserAppName(String username);
 }
