@@ -1,5 +1,6 @@
 package com.rammp.stretchyourbody.service;
 
+import com.rammp.stretchyourbody.service.dto.ResultAverageDTO;
 import com.rammp.stretchyourbody.service.dto.UserVitalityDTO;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface UserVitalityService {
 
     /**
      *  Get all the userVitalities.
-     *  
+     *
      *  @return the list of entities
      */
     List<UserVitalityDTO> findAll();
@@ -37,4 +38,6 @@ public interface UserVitalityService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    ResultAverageDTO getAverage(Long id);
 }

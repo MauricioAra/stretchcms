@@ -11,5 +11,5 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface UserVitalityRepository extends JpaRepository<UserVitality,Long> {
-
+    List<UserVitality> findByUserAppId(Long id);
 }
