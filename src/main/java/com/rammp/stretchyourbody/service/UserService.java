@@ -5,6 +5,9 @@ import com.rammp.stretchyourbody.repository.*;
 import com.rammp.stretchyourbody.config.Constants;
 import com.rammp.stretchyourbody.security.AuthoritiesConstants;
 import com.rammp.stretchyourbody.security.SecurityUtils;
+import com.rammp.stretchyourbody.service.dto.BodyPartDTO;
+import com.rammp.stretchyourbody.service.dto.ExerciseDTO;
+import com.rammp.stretchyourbody.service.mapper.ExerciseMapper;
 import com.rammp.stretchyourbody.service.util.RandomUtil;
 import com.rammp.stretchyourbody.service.dto.UserDTO;
 
@@ -20,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManagerFactory;
 import java.time.ZonedDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Service class for managing users.
@@ -46,8 +50,12 @@ public class UserService {
 
     private final BodyPartRepository bodyPartRepository;
 
+    private final ExerciseMapper exerciseMapper;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, UserAppRepository userAppRepository, EntityManagerFactory entityManagerFactory, UserHealthRepository userHealthRepository, BodyPartRepository bodyPartRepository) {
+    private final ExerciseRepository exerciseRepository;
+
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, UserAppRepository userAppRepository, EntityManagerFactory entityManagerFactory, UserHealthRepository userHealthRepository, BodyPartRepository bodyPartRepository, ExerciseMapper exerciseMapper, ExerciseRepository exerciseRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.socialService = socialService;
@@ -56,6 +64,8 @@ public class UserService {
         this.entityManagerFactory = entityManagerFactory;
         this.userHealthRepository = userHealthRepository;
         this.bodyPartRepository = bodyPartRepository;
+        this.exerciseMapper = exerciseMapper;
+        this.exerciseRepository = exerciseRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -324,5 +334,41 @@ public class UserService {
             }
         }
         return idWeb;
+    }
+
+    public List<ExerciseDTO> findUserFavoriteExercises(Long userId) {
+        List<ExerciseDTO> result;
+        List<Exercise> favoriteExerciseList = new ArrayList<Exercise>();
+        UserApp userWithExcercises = userAppRepository.findOneWithEagerRelationships(userId);
+
+        if (userWithExcercises != null) {
+            for (Exercise ex : userWithExcercises.getExercises()) {
+                favoriteExerciseList.add(ex);
+            }
+        }
+
+        result = favoriteExerciseList.stream()
+            .map(exerciseMapper::exerciseToExerciseDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+
+        return result;
+    }
+
+    public void addExerciseToFavorites(Long userId, Long exerciseId) {
+        UserApp usr = userAppRepository.findOne(userId);
+        Exercise ex = exerciseRepository.findOne(exerciseId);
+        Set<Exercise> exerciseList = usr.getExercises();
+        exerciseList.add(ex);
+        usr.setExercises(exerciseList);
+        userAppRepository.save(usr);
+    }
+
+    public void removeExerciseFromFavorites(Long userId, Long exerciseId) {
+        UserApp usr = userAppRepository.findOne(userId);
+        Exercise ex = exerciseRepository.findOne(exerciseId);
+        Set<Exercise> exerciseList = usr.getExercises();
+        exerciseList.remove(ex);
+        usr.setExercises(exerciseList);
+        userAppRepository.save(usr);
     }
 }

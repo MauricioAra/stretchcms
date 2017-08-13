@@ -8,6 +8,7 @@ import com.rammp.stretchyourbody.repository.UserRepository;
 import com.rammp.stretchyourbody.security.AuthoritiesConstants;
 import com.rammp.stretchyourbody.service.MailService;
 import com.rammp.stretchyourbody.service.UserService;
+import com.rammp.stretchyourbody.service.dto.ExerciseDTO;
 import com.rammp.stretchyourbody.service.dto.UserDTO;
 import com.rammp.stretchyourbody.service.dto.UserSingleDTO;
 import com.rammp.stretchyourbody.web.rest.vm.ManagedUserVM;
@@ -228,5 +229,23 @@ public class UserResource {
 
         userService.updateUserHealth(userId, age, weight, height, gender, workHours,
             doesWorkOut, isSmoker, isHealthy, bodyParts);
+    }
+
+    @GetMapping("/user-apps/favorite-exercises/{userId}")
+    @Timed
+    public List<ExerciseDTO> getFavoriteExercises(@PathVariable("userId") Long userId) {
+        return userService.findUserFavoriteExercises(userId);
+    }
+
+    @PostMapping("/users/add-to-favorites/{userId}/{exerciseId}")
+    @Timed
+    public void addExerciseToFavorites(@PathVariable("userId") Long userId, @PathVariable("exerciseId") Long exerciseId) {
+        userService.addExerciseToFavorites(userId, exerciseId);
+    }//removeExerciseFromFavorites
+
+    @PostMapping("/users/remove-from-favorites/{userId}/{exerciseId}")
+    @Timed
+    public void removeExerciseFromFavorites(@PathVariable("userId") Long userId, @PathVariable("exerciseId") Long exerciseId) {
+        userService.removeExerciseFromFavorites(userId, exerciseId);
     }
 }

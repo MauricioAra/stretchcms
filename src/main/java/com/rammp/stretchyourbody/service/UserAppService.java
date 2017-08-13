@@ -18,7 +18,7 @@ public interface UserAppService {
 
     /**
      *  Get all the userApps.
-     *  
+     *
      *  @return the list of entities
      */
     List<UserAppDTO> findAll();

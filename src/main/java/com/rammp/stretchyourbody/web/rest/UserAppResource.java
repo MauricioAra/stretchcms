@@ -2,6 +2,7 @@ package com.rammp.stretchyourbody.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.rammp.stretchyourbody.service.UserAppService;
+import com.rammp.stretchyourbody.service.dto.ExerciseDTO;
 import com.rammp.stretchyourbody.web.rest.util.HeaderUtil;
 import com.rammp.stretchyourbody.service.dto.UserAppDTO;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -28,7 +29,7 @@ public class UserAppResource {
     private final Logger log = LoggerFactory.getLogger(UserAppResource.class);
 
     private static final String ENTITY_NAME = "userApp";
-        
+
     private final UserAppService userAppService;
 
     public UserAppResource(UserAppService userAppService) {
@@ -116,5 +117,4 @@ public class UserAppResource {
         userAppService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
-
 }
