@@ -23,6 +23,7 @@ public interface UserAppMapper {
     @Mapping(source = "userHealthId", target = "userHealth")
     @Mapping(target = "programs", ignore = true)
     @Mapping(target = "userVitalities", ignore = true)
+    @Mapping(target = "bodyPoints", ignore = true)
     UserApp userAppDTOToUserApp(UserAppDTO userAppDTO);
 
     List<UserApp> userAppDTOsToUserApps(List<UserAppDTO> userAppDTOs);

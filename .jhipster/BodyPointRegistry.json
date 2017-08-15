@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "bodyPoint",
+            "otherEntityName": "bodyPoint",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "bodypart"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170815153617",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "body_point_registry",
+    "pagination": "no"
+}

@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "userApp",
+            "otherEntityName": "userApp",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "bodyPointRegistry",
+            "otherEntityName": "bodyPointRegistry",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "bodyPoint"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "bodypart",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idbodypart",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170815153443",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "body_point",
+    "pagination": "no"
+}

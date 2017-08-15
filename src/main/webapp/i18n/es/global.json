@@ -19,6 +19,8 @@
                 "calendar": "Calendar",
                 "food": "Food",
                 "foodTag": "Food Tag",
+                "bodyPoint": "Body Point",
+                "bodyPointRegistry": "Body Point Registry",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

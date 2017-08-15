@@ -5,9 +5,9 @@
         .module('stretchCmsApp')
         .controller('UserAppDialogController', UserAppDialogController);
 
-    UserAppDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'UserApp', 'User', 'UserHealth', 'Program', 'UserVitality', 'Exercise'];
+    UserAppDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'UserApp', 'User', 'UserHealth', 'Program', 'UserVitality', 'Exercise', 'BodyPoint'];
 
-    function UserAppDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, UserApp, User, UserHealth, Program, UserVitality, Exercise) {
+    function UserAppDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, UserApp, User, UserHealth, Program, UserVitality, Exercise, BodyPoint) {
         var vm = this;
 
         vm.userApp = entity;
@@ -26,6 +26,7 @@
         vm.programs = Program.query();
         vm.uservitalities = UserVitality.query();
         vm.exercises = Exercise.query();
+        vm.bodypoints = BodyPoint.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

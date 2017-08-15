@@ -1,0 +1,62 @@
+<div>
+    <h2 data-translate="stretchCmsApp.bodyPointRegistry.home.title">Body Point Registries</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="body-point-registry.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="stretchCmsApp.bodyPointRegistry.home.createLabel">
+                        Create new Body Point Registry
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="stretchCmsApp.bodyPointRegistry.type">Type</span></th>
+                    <th><span data-translate="stretchCmsApp.bodyPointRegistry.comment">Comment</span></th>
+                    <th><span data-translate="stretchCmsApp.bodyPointRegistry.bodyPoint">Body Point</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="bodyPointRegistry in vm.bodyPointRegistries track by bodyPointRegistry.id">
+                    <td><a ui-sref="body-point-registry-detail({id:bodyPointRegistry.id})">{{bodyPointRegistry.id}}</a></td>
+                    <td>{{bodyPointRegistry.type}}</td>
+                    <td>{{bodyPointRegistry.comment}}</td>
+                    <td>
+                        <a ui-sref="body-point-detail({id:bodyPointRegistry.bodyPointId})">{{bodyPointRegistry.bodyPointBodypart}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="body-point-registry-detail({id:bodyPointRegistry.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="body-point-registry.edit({id:bodyPointRegistry.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="body-point-registry.delete({id:bodyPointRegistry.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

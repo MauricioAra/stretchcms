@@ -3,6 +3,7 @@ package com.rammp.stretchyourbody.service.impl;
 import com.rammp.stretchyourbody.service.UserVitalityService;
 import com.rammp.stretchyourbody.domain.UserVitality;
 import com.rammp.stretchyourbody.repository.UserVitalityRepository;
+import com.rammp.stretchyourbody.service.dto.ResultAverageDTO;
 import com.rammp.stretchyourbody.service.dto.UserVitalityDTO;
 import com.rammp.stretchyourbody.service.mapper.UserVitalityMapper;
 import org.slf4j.Logger;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 public class UserVitalityServiceImpl implements UserVitalityService{
 
     private final Logger log = LoggerFactory.getLogger(UserVitalityServiceImpl.class);
-    
+
     private final UserVitalityRepository userVitalityRepository;
 
     private final UserVitalityMapper userVitalityMapper;
@@ -49,7 +50,7 @@ public class UserVitalityServiceImpl implements UserVitalityService{
 
     /**
      *  Get all the userVitalities.
-     *  
+     *
      *  @return the list of entities
      */
     @Override
@@ -87,5 +88,26 @@ public class UserVitalityServiceImpl implements UserVitalityService{
     public void delete(Long id) {
         log.debug("Request to delete UserVitality : {}", id);
         userVitalityRepository.delete(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ResultAverageDTO getAverage(Long id) {
+
+        List<UserVitality> userVitalities =  userVitalityRepository.findByUserAppId(id);
+        ResultAverageDTO resultAverageDTO = new ResultAverageDTO();
+        int promedio = 0;
+
+        if(userVitalities.size() == 0){
+            resultAverageDTO.setAverage(promedio);
+        }else{
+            for(int i=0; i<userVitalities.size(); i++){
+                promedio = promedio + userVitalities.get(i).getRange().intValue();
+            }
+            promedio = promedio/userVitalities.size();
+            resultAverageDTO.setAverage(promedio);
+        }
+
+        return resultAverageDTO;
     }
 }

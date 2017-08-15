@@ -25,7 +25,8 @@
             "userHealth": "User Health",
             "program": "Program",
             "userVitality": "User Vitality",
-            "exercise": "Exercise"
+            "exercise": "Exercise",
+            "bodyPoint": "Body Point"
         }
     }
 }

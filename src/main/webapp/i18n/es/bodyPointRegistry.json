@@ -1,0 +1,23 @@
+{
+    "stretchCmsApp": {
+        "bodyPointRegistry" : {
+            "home": {
+                "title": "Body Point Registries",
+                "createLabel": "Crear nuevo Body Point Registry",
+                "createOrEditLabel": "Crear o editar Body Point Registry"
+            },
+            "created": "Un nuevo Body Point Registry ha sido creado con el identificador {{ param }}",
+            "updated": "Un Body Point Registry ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Body Point Registry ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Body Point Registry {{ id }}?"
+            },
+            "detail": {
+                "title": "Body Point Registry"
+            },
+            "type": "Type",
+            "comment": "Comment",
+            "bodyPoint": "Body Point"
+        }
+    }
+}

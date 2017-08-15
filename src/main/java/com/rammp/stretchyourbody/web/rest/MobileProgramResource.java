@@ -61,4 +61,11 @@ public class MobileProgramResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @PutMapping("/update_rogram")
+    @Timed
+    public ProgramDTO updateProgram(@RequestBody ProgramDTO programDTO){
+        ProgramDTO programDTO1 = programService.save(programDTO);
+        return programDTO1;
+    }
+
 }

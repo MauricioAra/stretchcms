@@ -64,6 +64,10 @@ public class UserApp implements Serializable {
                inverseJoinColumns = @JoinColumn(name="exercises_id", referencedColumnName="id"))
     private Set<Exercise> exercises = new HashSet<>();
 
+    @OneToMany(mappedBy = "userApp")
+    @JsonIgnore
+    private Set<BodyPoint> bodyPoints = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -249,6 +253,31 @@ public class UserApp implements Serializable {
 
     public void setExercises(Set<Exercise> exercises) {
         this.exercises = exercises;
+    }
+
+    public Set<BodyPoint> getBodyPoints() {
+        return bodyPoints;
+    }
+
+    public UserApp bodyPoints(Set<BodyPoint> bodyPoints) {
+        this.bodyPoints = bodyPoints;
+        return this;
+    }
+
+    public UserApp addBodyPoint(BodyPoint bodyPoint) {
+        this.bodyPoints.add(bodyPoint);
+        bodyPoint.setUserApp(this);
+        return this;
+    }
+
+    public UserApp removeBodyPoint(BodyPoint bodyPoint) {
+        this.bodyPoints.remove(bodyPoint);
+        bodyPoint.setUserApp(null);
+        return this;
+    }
+
+    public void setBodyPoints(Set<BodyPoint> bodyPoints) {
+        this.bodyPoints = bodyPoints;
     }
 
     @Override
