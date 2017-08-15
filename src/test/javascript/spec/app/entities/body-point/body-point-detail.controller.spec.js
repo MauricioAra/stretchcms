@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('UserApp Management Detail Controller', function() {
+    describe('BodyPoint Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockUserApp, MockUser, MockUserHealth, MockProgram, MockUserVitality, MockExercise, MockBodyPoint;
+        var MockEntity, MockPreviousState, MockBodyPoint, MockUserApp, MockBodyPointRegistry;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,13 +12,9 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockUserApp = jasmine.createSpy('MockUserApp');
-            MockUser = jasmine.createSpy('MockUser');
-            MockUserHealth = jasmine.createSpy('MockUserHealth');
-            MockProgram = jasmine.createSpy('MockProgram');
-            MockUserVitality = jasmine.createSpy('MockUserVitality');
-            MockExercise = jasmine.createSpy('MockExercise');
             MockBodyPoint = jasmine.createSpy('MockBodyPoint');
+            MockUserApp = jasmine.createSpy('MockUserApp');
+            MockBodyPointRegistry = jasmine.createSpy('MockBodyPointRegistry');
             
 
             var locals = {
@@ -26,23 +22,19 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
+                'BodyPoint': MockBodyPoint,
                 'UserApp': MockUserApp,
-                'User': MockUser,
-                'UserHealth': MockUserHealth,
-                'Program': MockProgram,
-                'UserVitality': MockUserVitality,
-                'Exercise': MockExercise,
-                'BodyPoint': MockBodyPoint
+                'BodyPointRegistry': MockBodyPointRegistry
             };
             createController = function() {
-                $injector.get('$controller')("UserAppDetailController", locals);
+                $injector.get('$controller')("BodyPointDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'stretchCmsApp:userAppUpdate';
+                var eventType = 'stretchCmsApp:bodyPointUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

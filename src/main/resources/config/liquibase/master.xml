@@ -17,6 +17,8 @@
     <include file="classpath:config/liquibase/changelog/20170617213551_added_entity_Calendar.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170617213552_added_entity_Food.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170617213553_added_entity_FoodTag.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170815153443_added_entity_BodyPoint.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170815153617_added_entity_BodyPointRegistry.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170617213542_added_entity_constraints_UserApp.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170617213543_added_entity_constraints_UserVitality.xml" relativeToChangelogFile="false"/>
@@ -28,5 +30,7 @@
     <include file="classpath:config/liquibase/changelog/20170617213550_added_entity_constraints_Program.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170617213551_added_entity_constraints_Calendar.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170617213552_added_entity_constraints_Food.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170815153443_added_entity_constraints_BodyPoint.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170815153617_added_entity_constraints_BodyPointRegistry.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

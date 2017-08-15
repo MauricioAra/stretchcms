@@ -5,9 +5,9 @@
         .module('stretchCmsApp')
         .controller('UserAppDetailController', UserAppDetailController);
 
-    UserAppDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserApp', 'User', 'UserHealth', 'Program', 'UserVitality', 'Exercise'];
+    UserAppDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserApp', 'User', 'UserHealth', 'Program', 'UserVitality', 'Exercise', 'BodyPoint'];
 
-    function UserAppDetailController($scope, $rootScope, $stateParams, previousState, entity, UserApp, User, UserHealth, Program, UserVitality, Exercise) {
+    function UserAppDetailController($scope, $rootScope, $stateParams, previousState, entity, UserApp, User, UserHealth, Program, UserVitality, Exercise, BodyPoint) {
         var vm = this;
 
         vm.userApp = entity;

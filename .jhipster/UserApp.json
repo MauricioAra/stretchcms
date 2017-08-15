@@ -36,6 +36,12 @@
             "otherEntityName": "exercise",
             "otherEntityField": "name",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "bodyPoint",
+            "otherEntityName": "bodyPoint",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "userApp"
         }
     ],
     "fields": [
@@ -71,8 +77,8 @@
         }
     ],
     "changelogDate": "20170617213542",
-    "entityTableName": "user_app",
     "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl"
+    "service": "serviceImpl",
+    "entityTableName": "user_app",
+    "pagination": "no"
 }

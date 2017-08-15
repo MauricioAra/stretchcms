@@ -1,0 +1,24 @@
+{
+    "stretchCmsApp": {
+        "bodyPoint" : {
+            "home": {
+                "title": "Body Points",
+                "createLabel": "Crear nuevo Body Point",
+                "createOrEditLabel": "Crear o editar Body Point"
+            },
+            "created": "Un nuevo Body Point ha sido creado con el identificador {{ param }}",
+            "updated": "Un Body Point ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Body Point ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Body Point {{ id }}?"
+            },
+            "detail": {
+                "title": "Body Point"
+            },
+            "bodypart": "Bodypart",
+            "idbodypart": "Idbodypart",
+            "userApp": "User App",
+            "bodyPointRegistry": "Body Point Registry"
+        }
+    }
+}
