@@ -13,4 +13,5 @@ import java.util.List;
 public interface ExerciseRepository extends JpaRepository<Exercise,Long> {
     public List<Exercise> findByIsRecommended(boolean isRecom);
     public List<Exercise> findByBodyPartId(Long id);
+
 }
