@@ -54,6 +54,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="totalcalification" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="countvotes" type="integer">
+                <constraints nullable="true" />
+            </column>
+
             <column name="body_part_id" type="bigint">
                 <constraints nullable="true" />
             </column>

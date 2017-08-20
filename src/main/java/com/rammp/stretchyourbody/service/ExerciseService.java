@@ -38,6 +38,5 @@ public interface ExerciseService {
      */
     void delete(Long id);
 
-
     List<ExerciseDTO> findByBodyPart(Long id);
 }
