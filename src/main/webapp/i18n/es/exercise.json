@@ -23,6 +23,8 @@
             "calification": "Calification",
             "status": "Status",
             "isRecommended": "Is Recommended",
+            "totalcalification": "Totalcalification",
+            "countvotes": "Countvotes",
             "bodyPart": "Body Part",
             "userApp": "User App",
             "program": "Program"

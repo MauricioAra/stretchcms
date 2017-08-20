@@ -112,6 +112,8 @@
                                 calification: null,
                                 status: null,
                                 isRecommended: null,
+                                totalcalification: null,
+                                countvotes: null,
                                 id: null
                             };
                         }

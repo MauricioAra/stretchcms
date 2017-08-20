@@ -72,11 +72,19 @@
         {
             "fieldName": "isRecommended",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "totalcalification",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "countvotes",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170617213549",
-    "entityTableName": "exercise",
     "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl"
+    "service": "serviceImpl",
+    "entityTableName": "exercise",
+    "pagination": "no"
 }

@@ -52,6 +52,12 @@ public class Exercise implements Serializable {
     @Column(name = "is_recommended")
     private Boolean isRecommended;
 
+    @Column(name = "totalcalification")
+    private Integer totalcalification;
+
+    @Column(name = "countvotes")
+    private Integer countvotes;
+
     @ManyToOne
     private BodyPart bodyPart;
 
@@ -175,6 +181,32 @@ public class Exercise implements Serializable {
         this.isRecommended = isRecommended;
     }
 
+    public Integer getTotalcalification() {
+        return totalcalification;
+    }
+
+    public Exercise totalcalification(Integer totalcalification) {
+        this.totalcalification = totalcalification;
+        return this;
+    }
+
+    public void setTotalcalification(Integer totalcalification) {
+        this.totalcalification = totalcalification;
+    }
+
+    public Integer getCountvotes() {
+        return countvotes;
+    }
+
+    public Exercise countvotes(Integer countvotes) {
+        this.countvotes = countvotes;
+        return this;
+    }
+
+    public void setCountvotes(Integer countvotes) {
+        this.countvotes = countvotes;
+    }
+
     public BodyPart getBodyPart() {
         return bodyPart;
     }
@@ -270,6 +302,8 @@ public class Exercise implements Serializable {
             ", calification='" + calification + "'" +
             ", status='" + status + "'" +
             ", isRecommended='" + isRecommended + "'" +
+            ", totalcalification='" + totalcalification + "'" +
+            ", countvotes='" + countvotes + "'" +
             '}';
     }
 }

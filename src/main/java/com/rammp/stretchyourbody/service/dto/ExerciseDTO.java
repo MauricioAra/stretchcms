@@ -36,6 +36,10 @@ public class ExerciseDTO implements Serializable {
 
     private Boolean isRecommended;
 
+    private Integer totalcalification;
+
+    private Integer countvotes;
+
     private Long bodyPartId;
 
     private String bodyPartName;
@@ -103,6 +107,20 @@ public class ExerciseDTO implements Serializable {
     public void setIsRecommended(Boolean isRecommended) {
         this.isRecommended = isRecommended;
     }
+    public Integer getTotalcalification() {
+        return totalcalification;
+    }
+
+    public void setTotalcalification(Integer totalcalification) {
+        this.totalcalification = totalcalification;
+    }
+    public Integer getCountvotes() {
+        return countvotes;
+    }
+
+    public void setCountvotes(Integer countvotes) {
+        this.countvotes = countvotes;
+    }
 
     public Long getBodyPartId() {
         return bodyPartId;
@@ -153,6 +171,8 @@ public class ExerciseDTO implements Serializable {
             ", calification='" + calification + "'" +
             ", status='" + status + "'" +
             ", isRecommended='" + isRecommended + "'" +
+            ", totalcalification='" + totalcalification + "'" +
+            ", countvotes='" + countvotes + "'" +
             '}';
     }
 }

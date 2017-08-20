@@ -89,7 +89,6 @@ public class ExerciseServiceImpl implements ExerciseService{
         exerciseRepository.delete(id);
     }
 
-
     public List<ExerciseDTO> findByBodyPart(Long id){
 
         List<ExerciseDTO> result = exerciseRepository.findByBodyPartId(id).stream()

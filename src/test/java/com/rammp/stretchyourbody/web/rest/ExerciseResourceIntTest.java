@@ -64,6 +64,12 @@ public class ExerciseResourceIntTest {
     private static final Boolean DEFAULT_IS_RECOMMENDED = false;
     private static final Boolean UPDATED_IS_RECOMMENDED = true;
 
+    private static final Integer DEFAULT_TOTALCALIFICATION = 1;
+    private static final Integer UPDATED_TOTALCALIFICATION = 2;
+
+    private static final Integer DEFAULT_COUNTVOTES = 1;
+    private static final Integer UPDATED_COUNTVOTES = 2;
+
     @Autowired
     private ExerciseRepository exerciseRepository;
 
@@ -114,7 +120,9 @@ public class ExerciseResourceIntTest {
             .difficulty(DEFAULT_DIFFICULTY)
             .calification(DEFAULT_CALIFICATION)
             .status(DEFAULT_STATUS)
-            .isRecommended(DEFAULT_IS_RECOMMENDED);
+            .isRecommended(DEFAULT_IS_RECOMMENDED)
+            .totalcalification(DEFAULT_TOTALCALIFICATION)
+            .countvotes(DEFAULT_COUNTVOTES);
         return exercise;
     }
 
@@ -147,6 +155,8 @@ public class ExerciseResourceIntTest {
         assertThat(testExercise.getCalification()).isEqualTo(DEFAULT_CALIFICATION);
         assertThat(testExercise.isStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testExercise.isIsRecommended()).isEqualTo(DEFAULT_IS_RECOMMENDED);
+        assertThat(testExercise.getTotalcalification()).isEqualTo(DEFAULT_TOTALCALIFICATION);
+        assertThat(testExercise.getCountvotes()).isEqualTo(DEFAULT_COUNTVOTES);
     }
 
     @Test
@@ -301,7 +311,9 @@ public class ExerciseResourceIntTest {
             .andExpect(jsonPath("$.[*].difficulty").value(hasItem(DEFAULT_DIFFICULTY.toString())))
             .andExpect(jsonPath("$.[*].calification").value(hasItem(DEFAULT_CALIFICATION)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())))
-            .andExpect(jsonPath("$.[*].isRecommended").value(hasItem(DEFAULT_IS_RECOMMENDED.booleanValue())));
+            .andExpect(jsonPath("$.[*].isRecommended").value(hasItem(DEFAULT_IS_RECOMMENDED.booleanValue())))
+            .andExpect(jsonPath("$.[*].totalcalification").value(hasItem(DEFAULT_TOTALCALIFICATION)))
+            .andExpect(jsonPath("$.[*].countvotes").value(hasItem(DEFAULT_COUNTVOTES)));
     }
 
     @Test
@@ -322,7 +334,9 @@ public class ExerciseResourceIntTest {
             .andExpect(jsonPath("$.difficulty").value(DEFAULT_DIFFICULTY.toString()))
             .andExpect(jsonPath("$.calification").value(DEFAULT_CALIFICATION))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()))
-            .andExpect(jsonPath("$.isRecommended").value(DEFAULT_IS_RECOMMENDED.booleanValue()));
+            .andExpect(jsonPath("$.isRecommended").value(DEFAULT_IS_RECOMMENDED.booleanValue()))
+            .andExpect(jsonPath("$.totalcalification").value(DEFAULT_TOTALCALIFICATION))
+            .andExpect(jsonPath("$.countvotes").value(DEFAULT_COUNTVOTES));
     }
 
     @Test
@@ -350,7 +364,9 @@ public class ExerciseResourceIntTest {
             .difficulty(UPDATED_DIFFICULTY)
             .calification(UPDATED_CALIFICATION)
             .status(UPDATED_STATUS)
-            .isRecommended(UPDATED_IS_RECOMMENDED);
+            .isRecommended(UPDATED_IS_RECOMMENDED)
+            .totalcalification(UPDATED_TOTALCALIFICATION)
+            .countvotes(UPDATED_COUNTVOTES);
         ExerciseDTO exerciseDTO = exerciseMapper.exerciseToExerciseDTO(updatedExercise);
 
         restExerciseMockMvc.perform(put("/api/exercises")
@@ -370,6 +386,8 @@ public class ExerciseResourceIntTest {
         assertThat(testExercise.getCalification()).isEqualTo(UPDATED_CALIFICATION);
         assertThat(testExercise.isStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testExercise.isIsRecommended()).isEqualTo(UPDATED_IS_RECOMMENDED);
+        assertThat(testExercise.getTotalcalification()).isEqualTo(UPDATED_TOTALCALIFICATION);
+        assertThat(testExercise.getCountvotes()).isEqualTo(UPDATED_COUNTVOTES);
     }
 
     @Test
