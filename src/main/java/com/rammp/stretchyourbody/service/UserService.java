@@ -371,4 +371,16 @@ public class UserService {
         usr.setExercises(exerciseList);
         userAppRepository.save(usr);
     }
+
+    public void rateExercise(Long exerciseId, float rating) {
+        Exercise ex = exerciseRepository.findOne(exerciseId);
+
+        int oldRating = ex.getCalification();
+
+
+
+        int rate = (int) rating;
+        ex.setCalification(rate);
+        exerciseRepository.save(ex);
+    }
 }

@@ -248,4 +248,10 @@ public class UserResource {
     public void removeExerciseFromFavorites(@PathVariable("userId") Long userId, @PathVariable("exerciseId") Long exerciseId) {
         userService.removeExerciseFromFavorites(userId, exerciseId);
     }
+
+    @PostMapping("/users/rate-exercise/{exerciseId}/{rating}")
+    @Timed
+    public void rateExercise(@PathVariable("exerciseId") Long exerciseId, @PathVariable("rating") float rating) {
+        userService.rateExercise(exerciseId, rating);
+    }
 }
