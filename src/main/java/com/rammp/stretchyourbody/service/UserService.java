@@ -374,13 +374,25 @@ public class UserService {
 
     public void rateExercise(Long exerciseId, float rating) {
         Exercise ex = exerciseRepository.findOne(exerciseId);
+        Integer overAllRating;
+        Integer totalCalification;
+        Integer totalVotes;
 
-        int oldRating = ex.getCalification();
+        if(ex.getTotalcalification() == null) {
+            ex.setTotalcalification(0);
+        }
+        if(ex.getCountvotes() == null) {
+            ex.setCountvotes(0);
+        }
 
+        totalVotes = ex.getCountvotes() + 1;
+        ex.setCountvotes(totalVotes);
 
-
-        int rate = (int) rating;
-        ex.setCalification(rate);
+        Integer userRating = (int) rating;
+        totalCalification = userRating + ex.getTotalcalification();
+        ex.setTotalcalification(totalCalification);
+        overAllRating = ex.getTotalcalification() / ex.getCountvotes();
+        ex.setCalification(overAllRating);
         exerciseRepository.save(ex);
     }
 }
